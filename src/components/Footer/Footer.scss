@@ -1,0 +1,18 @@
+@import '../../lib.scss';
+$height: 64px;
+
+footer {
+	height: $height;
+	width: 100vw;
+	background-color: darken($color: $color, $amount: 8);
+	color: $textColor;
+
+	a {
+		color: $textColor;
+	}
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}

@@ -1,0 +1,53 @@
+@import '../../../lib.scss';
+
+#shop {
+	.header {
+		width: 100vw;
+		height: 400px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: $textColor;
+
+		background-image: url('../../../assets/landing.jpg');
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center center;
+
+		.header-wrapper {
+			width: 400px;
+			height: 100px;
+
+			background-color: #222222bb;
+
+			transition: background-color 500ms $easing;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			h1 {
+				@include fadeUp(50ms);
+
+				transition: background-color 500ms $easing;
+			}
+		}
+	}
+
+	section {
+		height: calc(100vh - 456px);
+
+		@media screen and (min-width: 599px) {
+			height: calc(100vh - 464px);
+		}
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		color: $textColor;
+	}
+}

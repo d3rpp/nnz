@@ -1,0 +1,132 @@
+@import '../../../../lib.scss';
+
+#recipes-index {
+	.header {
+		width: 100vw;
+		height: 400px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: $textColor;
+
+		background-image: url('../../../../assets/landing.jpg');
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center center;
+
+		.header-wrapper {
+			width: 400px;
+			height: 100px;
+
+			&.mobile {
+				height: 100%;
+				width: 100%;
+			}
+
+			background-color: #222222bb;
+
+			transition: background-color 500ms $easing;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+			h1 {
+				@include fadeUp(50ms);
+
+				transition: background-color 500ms $easing;
+			}
+		}
+	}
+
+	.options {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		margin: 16px 15vw;
+
+		min-height: calc(100vh - 456px);
+
+		@media screen and (min-width: 599px) {
+			min-height: calc(100vh - 464px);
+			margin: 16px 5vw;
+		}
+
+		@media screen and (min-width: 1025px) {
+			flex-direction: row;
+			margin: 0 5vw;
+		}
+
+		a {
+			width: 90%;
+			height: 90%;
+
+			margin: 16px 16px;
+
+			@media screen and (min-width: 599px) {
+				margin: 16px 32px;
+			}
+
+			text-decoration: none;
+
+			div.card {
+				background-color: #e5e5e5;
+				border-radius: 3px;
+
+				div.media {
+					height: 150px;
+
+					background-size: cover;
+					background-position: center center;
+					background-repeat: no-repeat;
+					background-size: 80%;
+				}
+			}
+
+			.text {
+				height: 150px;
+				width: 100%;
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				text-align: center;
+
+				span {
+					text-decoration: none;
+
+					font-size: 32px;
+				}
+
+				&.chocolate {
+					background-color: darken($color: #ff8a6c, $amount: 2);
+
+					span {
+						color: $textColor;
+					}
+				}
+
+				&.sweet {
+					background-color: darken($color: #ffce3b, $amount: 10);
+
+					span {
+						color: #111;
+					}
+				}
+
+				&.savoury {
+					background-color: darken($color: #3f7439, $amount: 2);
+
+					span {
+						color: $textColor;
+					}
+				}
+			}
+		}
+	}
+}

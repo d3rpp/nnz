@@ -1,0 +1,149 @@
+@import '../../../lib.scss';
+
+#index {
+	section {
+		background-attachment: fixed;
+
+		&.landing {
+			background-image: url('../../../assets/landing.jpg');
+			background-color: #222;
+			background-position: center center;
+			background-size: cover;
+			// background-repeat: no-repeat;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			height: calc(100vh - 64px);
+
+			@media screen and (min-height: 599px) {
+				height: calc(100vh - 56px);
+			}
+
+			.landing-text-container {
+				background-color: #222222bb;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				text-align: center;
+
+				height: 100%;
+				width: 100%;
+
+				@media screen and (min-width: 1200px) {
+					width: 50%;
+					height: 500px;
+				}
+
+				img {
+					width: 80%;
+
+					@include fadeUp(0ms);
+				}
+
+				button {
+					cursor: pointer;
+					border: none;
+					background: transparent;
+
+					color: #f3f3f3;
+					&:hover {
+						color: #d3d3d3;
+					}
+
+					&.mobile {
+						display: none;
+					}
+
+					@include fadeUp(400ms);
+				}
+
+				.slogan {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					color: white;
+
+					font-size: 1.25em;
+
+					&.mobile {
+						flex-direction: column;
+						div {
+							display: none;
+						}
+
+						.first,
+						.last {
+							text-align: center;
+						}
+
+						.first {
+							margin-bottom: 16px;
+						}
+					}
+
+					.first {
+						text-align: right;
+						@include fadeUp(100ms);
+					}
+
+					.last {
+						text-align: left;
+						@include fadeUp(300ms);
+					}
+
+					span {
+						width: 400px;
+						// width: 100%;
+					}
+
+					div {
+						margin: 0 8px;
+						@include fadeUp(200ms);
+					}
+				}
+			}
+		}
+
+		&.about {
+			background-color: darken($color: $color, $amount: 9);
+			color: $textColor;
+			a {
+				color: $textColor;
+			}
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			color: $textColor;
+
+			// font-weight: 300 !important;
+
+			& h1,
+			& p {
+				margin: 16px 12.5vw;
+			}
+
+			&.mobile h1,
+			&.mobile p {
+				margin: 8px 16px;
+			}
+
+			h1 {
+				font-size: 28px;
+			}
+
+			min-height: calc(100vh - 64px);
+
+			@media screen and (min-height: 599px) {
+				min-height: calc(100vh - 56px);
+			}
+
+			height: auto;
+		}
+	}
+}

@@ -1,0 +1,373 @@
+@import '../../../../lib.scss';
+#recipe-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	// align-items: center;
+
+	.loading {
+		.lds-ellipsis {
+			display: inline-block;
+			position: relative;
+			width: 80px;
+			height: 80px;
+		}
+		.lds-ellipsis div {
+			position: absolute;
+			top: 33px;
+			width: 13px;
+			height: 13px;
+			border-radius: 50%;
+			background: #fff;
+			animation-timing-function: cubic-bezier(0, 1, 1, 0);
+		}
+		.lds-ellipsis div:nth-child(1) {
+			left: 8px;
+			animation: lds-ellipsis1 0.6s infinite;
+		}
+		.lds-ellipsis div:nth-child(2) {
+			left: 8px;
+			animation: lds-ellipsis2 0.6s infinite;
+		}
+		.lds-ellipsis div:nth-child(3) {
+			left: 32px;
+			animation: lds-ellipsis2 0.6s infinite;
+		}
+		.lds-ellipsis div:nth-child(4) {
+			left: 56px;
+			animation: lds-ellipsis3 0.6s infinite;
+		}
+		@keyframes lds-ellipsis1 {
+			0% {
+				transform: scale(0);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+		@keyframes lds-ellipsis3 {
+			0% {
+				transform: scale(1);
+			}
+			100% {
+				transform: scale(0);
+			}
+		}
+		@keyframes lds-ellipsis2 {
+			0% {
+				transform: translate(0, 0);
+			}
+			100% {
+				transform: translate(24px, 0);
+			}
+		}
+	}
+
+	.header {
+		width: 100vw;
+		height: 400px !important;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		color: $textColor;
+
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center center;
+		background-color: #333;
+
+		&.loading {
+			.loading-container {
+				position: absolute;
+				top: 64px;
+				left: 0;
+				width: 100vw;
+				height: 400px;
+
+				@media screen and (min-width: 599px) {
+					top: 56px;
+				}
+
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.lds-ellipsis {
+					display: inline-block;
+					position: relative;
+					width: 80px;
+					height: 80px;
+
+					// z-index: 1;
+				}
+				.lds-ellipsis div {
+					position: absolute;
+					top: 33px;
+					width: 13px;
+					height: 13px;
+					border-radius: 50%;
+					background: #fff;
+					animation-timing-function: cubic-bezier(0, 1, 1, 0);
+				}
+				.lds-ellipsis div:nth-child(1) {
+					left: 8px;
+					animation: lds-ellipsis1 0.6s infinite;
+				}
+				.lds-ellipsis div:nth-child(2) {
+					left: 8px;
+					animation: lds-ellipsis2 0.6s infinite;
+				}
+				.lds-ellipsis div:nth-child(3) {
+					left: 32px;
+					animation: lds-ellipsis2 0.6s infinite;
+				}
+				.lds-ellipsis div:nth-child(4) {
+					left: 56px;
+					animation: lds-ellipsis3 0.6s infinite;
+				}
+				@keyframes lds-ellipsis1 {
+					0% {
+						transform: scale(0);
+					}
+					100% {
+						transform: scale(1);
+					}
+				}
+				@keyframes lds-ellipsis3 {
+					0% {
+						transform: scale(1);
+					}
+					100% {
+						transform: scale(0);
+					}
+				}
+				@keyframes lds-ellipsis2 {
+					0% {
+						transform: translate(0, 0);
+					}
+					100% {
+						transform: translate(24px, 0);
+					}
+				}
+			}
+		}
+
+		.header-wrapper {
+			// width: 400px;
+			// height: 100px;
+
+			// position: absolute;
+
+			z-index: 100;
+
+			background-color: #222222bb;
+
+			transition: background-color 500ms $easing;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+
+			&.mobile {
+				width: 100%;
+				height: 100%;
+
+				.details {
+					flex-direction: column;
+
+					span {
+						margin: 16px 0;
+					}
+				}
+			}
+
+			h1 {
+				@include fadeUp(50ms);
+
+				transition: background-color 500ms $easing;
+
+				margin: 32px 0;
+			}
+		}
+
+		.details {
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+
+			margin: 32px 0;
+
+			&.mobile {
+				flex-direction: column;
+			}
+
+			span {
+				width: 200px;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				@include fadeUp(200ms);
+			}
+		}
+	}
+
+	.loading {
+		width: 100vw;
+
+		height: 100%;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@include loader();
+	}
+
+	.recipe {
+		min-height: calc(100vh - 456px);
+
+		background-color: darken($color: $color, $amount: 3);
+
+		padding-top: 32px;
+
+		&.mobile {
+			.MuiCard-root {
+				width: 90vw;
+				.MuiList-root {
+					width: max-content;
+
+					.item {
+						.amount {
+							width: auto;
+							border-right: none;
+						}
+					}
+				}
+			}
+		}
+
+		@media screen and (min-width: 599px) {
+			min-height: calc(100vh - 464px);
+		}
+
+		.MuiCard-root {
+			width: 60%;
+			margin: 0 auto;
+
+			margin-bottom: 16px;
+
+			.MuiCardHeader-title {
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+
+				svg {
+					margin-right: 12px;
+				}
+			}
+
+			h2.optional {
+				margin: 16px 0;
+			}
+
+			.MuiList-root .item {
+				font-size: 16px;
+
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				height: 48px;
+				padding: none !important;
+				.amount {
+					width: 150px;
+					border-right: 1px solid #222222bb;
+					height: 100%;
+
+					text-align: center;
+					margin-right: 16px;
+
+					font-weight: bold;
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+
+			.methodList {
+				&.mobile {
+					.method-list-item {
+						.MuiListItem-root {
+							h1,
+							p,
+							em {
+								width: 75vw;
+								margin: 0 auto;
+							}
+
+							h1 {
+								font-size: 16px;
+								margin-bottom: 16px;
+							}
+
+							p {
+								margin-left: 0;
+							}
+
+							em {
+								margin-top: 8px;
+								width: 100%;
+								text-align: center;
+							}
+						}
+					}
+				}
+
+				.method-list-item {
+					.MuiListItem-root {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+
+						h1,
+						p,
+						em {
+							width: 90%;
+							text-align: left;
+						}
+
+						em {
+							margin-top: 16px;
+							font-weight: bold;
+						}
+
+						h1 {
+							margin-bottom: 16px;
+						}
+
+						p {
+							margin-left: 8px;
+						}
+
+						em {
+							margin-left: 16px;
+						}
+
+						margin: 16px 0;
+					}
+					hr {
+						width: 75%;
+						margin: 0 auto;
+					}
+				}
+			}
+		}
+	}
+}
