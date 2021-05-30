@@ -11,6 +11,10 @@
 
 		color: $textColor;
 
+		&:not(.mobile) {
+			margin-top: 64px;
+		}
+
 		background-image: url('../../../assets/landing.jpg');
 		background-color: #222222bb;
 		background-size: cover;

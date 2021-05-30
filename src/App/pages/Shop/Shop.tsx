@@ -13,7 +13,10 @@ export default () => {
 
 	return (
 		<div id="shop">
-			<div className="header" role="header">
+			<div
+				className={isMobile ? 'header mobile' : 'header'}
+				role="header"
+			>
 				<div
 					className={
 						isMobile ? 'header-wrapper mobile' : 'header-wrapper'

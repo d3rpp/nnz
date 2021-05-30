@@ -27,7 +27,10 @@ export default React.memo(() => {
 
 	return (
 		<div id="contact">
-			<div className="header" role="header">
+			<div
+				className={isMobile ? 'header mobile' : 'header'}
+				role="header"
+			>
 				<div
 					className={
 						isMobile ? 'header-wrapper mobile' : 'header-wrapper'

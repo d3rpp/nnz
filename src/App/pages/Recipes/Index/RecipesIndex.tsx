@@ -9,7 +9,10 @@ import './RecipesIndex.scss';
 export default ({ url }: { url: string }) => {
 	return (
 		<div id="recipes-index">
-			<div className="header" role="header">
+			<div
+				className={isMobile ? 'header mobile' : 'header'}
+				role="header"
+			>
 				<div
 					className={
 						isMobile ? 'header-wrapper mobile' : 'header-wrapper'

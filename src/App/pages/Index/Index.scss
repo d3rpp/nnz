@@ -18,8 +18,14 @@
 
 			height: calc(100vh - 64px);
 
+			margin-top: 64px;
+
+			&.mobile {
+				margin-top: 0px;
+			}
+
 			// @media screen and (min-height: 599px) {
-			// 	height: calc(100vh - 64px);
+			margin-top: 64px;
 			// }
 
 			.landing-text-container {
@@ -33,10 +39,10 @@
 				height: 100%;
 				width: 100%;
 
-				// @media screen and (min-width: 1200px) {
-				// 	width: 50%;
-				// 	height: 500px;
-				// }
+				@media screen and (min-width: 1200px) {
+					width: 50%;
+					height: 500px;
+				}
 
 				img {
 					width: 80%;
