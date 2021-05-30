@@ -8,7 +8,7 @@ import { isMobile } from 'mobile-device-detect';
 
 export default () => {
 	useEffect(() => {
-		firebase.analytics().logEvent('page_view', { page_title: 'Recipes' });
+		firebase.analytics().logEvent('page_view', { page_title: 'Shop' });
 	}, []);
 
 	return (

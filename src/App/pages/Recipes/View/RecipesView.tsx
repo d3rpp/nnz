@@ -11,12 +11,11 @@ import { isMobileOnly as isMobile } from 'mobile-device-detect';
 
 import { useParams } from 'react-router-dom';
 import { getRecipe, getRemoteAsset, MIX, Recipe } from '../../../../firebase';
-import './index.scss';
+import './RecipesView.scss';
 import {
 	Card,
 	CardContent,
 	CardHeader,
-	CardMedia,
 	Divider,
 	List,
 	ListItem,

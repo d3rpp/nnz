@@ -6,7 +6,7 @@
 
 		&.landing {
 			background-image: url('../../../assets/landing.jpg');
-			background-color: #222;
+			background-color: #222222bb;
 			background-position: center center;
 			background-size: cover;
 			// background-repeat: no-repeat;
@@ -16,11 +16,11 @@
 			justify-content: center;
 			align-items: center;
 
-			height: calc(100vh - 64px);
+			height: calc(100vh - 56px);
 
-			@media screen and (min-height: 599px) {
-				height: calc(100vh - 56px);
-			}
+			// @media screen and (min-height: 599px) {
+			// 	height: calc(100vh - 56px);
+			// }
 
 			.landing-text-container {
 				background-color: #222222bb;
@@ -33,10 +33,10 @@
 				height: 100%;
 				width: 100%;
 
-				@media screen and (min-width: 1200px) {
-					width: 50%;
-					height: 500px;
-				}
+				// @media screen and (min-width: 1200px) {
+				// 	width: 50%;
+				// 	height: 500px;
+				// }
 
 				img {
 					width: 80%;
@@ -137,11 +137,11 @@
 				font-size: 28px;
 			}
 
-			min-height: calc(100vh - 64px);
+			min-height: calc(100vh - 56px);
 
-			@media screen and (min-height: 599px) {
-				min-height: calc(100vh - 56px);
-			}
+			// @media screen and (min-height: 599px) {
+			// 	min-height: calc(100vh - 56px);
+			// }
 
 			height: auto;
 		}

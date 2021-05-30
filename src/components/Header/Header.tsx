@@ -69,9 +69,9 @@ const MobileHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 					</Link>
 				</MenuItem>
 				<MenuItem>
-					<Link to="/store" onClick={handleClose}>
+					<Link to="/shop" onClick={handleClose}>
 						<StoreIcon />
-						Store
+						Shop
 					</Link>
 				</MenuItem>
 				<MenuItem>
@@ -90,5 +90,9 @@ const MobileHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 };
 
 export const Header: React.FC<HeaderProps> = ({ colour }) => {
-	return isMobile ? <MobileHeader /> : <DesktopHeader />;
+	return isMobile || window.innerWidth < 599 ? (
+		<MobileHeader />
+	) : (
+		<DesktopHeader />
+	);
 };

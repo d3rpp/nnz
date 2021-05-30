@@ -33,11 +33,11 @@ export default React.memo(() => {
 						isMobile ? 'header-wrapper mobile' : 'header-wrapper'
 					}
 				>
-					<h1>Contact Page</h1>
+					<h1>Contact</h1>
 				</div>
 			</div>
 			<section className="contact">
-				<div className="wrapper">
+				<div className={isMobile ? 'wrapper mobile' : 'wrapper'}>
 					<div className="filler" />
 					<div className="section">
 						<Phone />

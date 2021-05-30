@@ -51,6 +51,9 @@ export default React.memo(() => {
 						onClick={scrollDown}
 						className={isMobile ? 'mobile' : ''}
 						data-aos-delay="250"
+						aria-label="About Us"
+						aria-labelledby="Index Header"
+						title="Scroll About Us"
 					>
 						<ArrowDownward />
 					</button>

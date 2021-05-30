@@ -12,6 +12,7 @@
 		color: $textColor;
 
 		background-image: url('../../../../assets/landing.jpg');
+		background-color: #222222bb;
 		background-size: cover;
 		background-attachment: fixed;
 		background-position: center center;
@@ -27,7 +28,7 @@
 
 			background-color: #222222bb;
 
-			transition: background-color 500ms $easing;
+			// transition: background-color 500ms $easing;
 
 			display: flex;
 			justify-content: center;
@@ -47,14 +48,14 @@
 		justify-content: center;
 		align-items: center;
 
-		margin: 16px 15vw;
+		margin: 16px;
 
 		min-height: calc(100vh - 456px);
 
-		@media screen and (min-width: 599px) {
-			min-height: calc(100vh - 464px);
-			margin: 16px 5vw;
-		}
+		// @media screen and (min-width: 599px) {
+		// 	min-height: calc(100vh - 464px);
+		// 	margin: 16px 5vw;
+		// }
 
 		@media screen and (min-width: 1025px) {
 			flex-direction: row;
@@ -62,7 +63,7 @@
 		}
 
 		a {
-			width: 90%;
+			width: 95%;
 			height: 90%;
 
 			margin: 16px 16px;

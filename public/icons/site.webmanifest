@@ -1,0 +1,62 @@
+{
+	"name": "NurtureNZ",
+	"short_name": "NurtureNZ",
+	"icons": [
+		{
+			"src": "./android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "./android-chrome-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#00513b",
+	"background_color": "#00513b",
+	"display": "standalone",
+	"lang": "en-NZ",
+	"categories": [
+		"food",
+		"baking",
+		"baking mixes",
+		"mixes",
+		"nurture",
+		"NurtureNZ"
+	],
+	"description": "The Official Website of the NurtureNZ Virtual Business",
+	"dir": "ltr",
+	"shortcuts": [
+		{
+			"name": "Recipes",
+			"url": "/recipes",
+			"description": "to the Recipes Page"
+		},
+		{
+			"name": "Chocolate Recipes",
+			"url": "/recipes/chocolate",
+			"description": "to the Chocolate Recipes Page"
+		},
+		{
+			"name": "Sweet Recipes",
+			"url": "/recipes/sweet",
+			"description": "to the Sweet Recipes Page"
+		},
+		{
+			"name": "Savoury Recipes",
+			"url": "/recipes/savoury",
+			"description": "to the Savoury Recipes Page"
+		},
+		{
+			"name": "Contact Us",
+			"url": "/contact",
+			"description": "to the Contact Page"
+		},
+		{
+			"name": "Shop",
+			"url": "/shop",
+			"description": "to the Online Shop (WIP)"
+		}
+	]
+}

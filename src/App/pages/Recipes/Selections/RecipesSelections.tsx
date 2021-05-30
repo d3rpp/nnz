@@ -9,7 +9,7 @@ import {
 	MIX,
 	getRemoteAsset,
 } from '../../../../firebase';
-import './index.scss';
+import './RecipesSelection.scss';
 
 export default ({ mix }: { mix: MIX }) => {
 	let [items, setItems] = useState<RecipeThumbnail[] | null>(null);

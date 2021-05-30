@@ -8,7 +8,7 @@
 		"url:*": [
 			"@parcel/transformer-raw"
 		],
-		"*.{jpg,jpeg,png,webm,ico,json}": [
+		"*.{jpg,jpeg,png,webm,ico}": [
 			"@parcel/transformer-raw"
 		],
 		"*.html": [
@@ -23,6 +23,9 @@
 		"*.svg": [
 			"@parcel/transformer-svgo",
 			"@parcel/transformer-svg-react"
+		],
+		"*.webmanifest": [
+			"@parcel/transformer-webmanifest"
 		]
 	},
 	"namers": [
@@ -58,7 +61,7 @@
 		"*.html": "@parcel/packager-html",
 		"*.css": "@parcel/packager-css",
 		"*.js": "@parcel/packager-js",
-		"*.{jpg,jpeg,png,webm,ico,json}": "@parcel/packager-raw"
+		"*.{jpg,jpeg,png,webm,ico,webmanifest}": "@parcel/packager-raw"
 	},
 	"resolvers": [
 		"@parcel/resolver-default"

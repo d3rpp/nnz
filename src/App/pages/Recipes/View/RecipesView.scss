@@ -76,19 +76,20 @@
 		background-size: cover;
 		background-attachment: fixed;
 		background-position: center center;
-		background-color: #333;
+		background-color: #222222bb;
 
 		&.loading {
 			.loading-container {
 				position: absolute;
-				top: 64px;
+				// top:64px;
+				top: 56px;
 				left: 0;
 				width: 100vw;
 				height: 400px;
 
-				@media screen and (min-width: 599px) {
-					top: 56px;
-				}
+				// @media screen and (min-width: 599px) {
+				// 	top: 56px;
+				// }
 
 				display: flex;
 				justify-content: center;
@@ -252,9 +253,9 @@
 			}
 		}
 
-		@media screen and (min-width: 599px) {
-			min-height: calc(100vh - 464px);
-		}
+		// @media screen and (min-width: 599px) {
+		// 	min-height: calc(100vh - 464px);
+		// }
 
 		.MuiCard-root {
 			width: 60%;

@@ -1,3 +1,4 @@
+import { isMobile } from 'mobile-device-detect';
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
@@ -23,7 +24,7 @@ export const App = () => {
 	return (
 		<Router>
 			<Header></Header>
-			<div id="container">
+			<div id="container" style={{ marginTop: isMobile ? '56px' : '' }}>
 				<main>
 					<Switch>
 						<Route path="/" exact>

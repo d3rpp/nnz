@@ -6,11 +6,13 @@ import 'firebase/analytics';
 
 import { Switch, useRouteMatch, Route } from 'react-router-dom';
 
-import RecipesIndexPage from './Index';
+import RecipesIndexPage from './Index/RecipesIndex';
 import Loading from '../../../components/Loading/Loading';
-import Selections from './Selections';
+import Selections from './Selections/RecipesSelections';
 
-let ViewRecipePage = React.lazy(() => import('./View').then((m) => m));
+let ViewRecipePage = React.lazy(() =>
+	import('./View/RecipesView').then((m) => m)
+);
 
 export default () => {
 	useEffect(() => {

@@ -2,9 +2,9 @@ import { isMobile } from 'mobile-device-detect';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { LogoBlack } from '../../../../assets/';
+import { LogoBlack } from '../../../../assets';
 
-import './index.scss';
+import './RecipesIndex.scss';
 
 export default ({ url }: { url: string }) => {
 	return (

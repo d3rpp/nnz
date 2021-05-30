@@ -1,9 +1,13 @@
 #container {
-	height: calc(100vh - 56px);
+	min-height: calc(100vh - 56px);
 
 	overflow-y: auto;
 
-	@media screen and (min-width: 599px) {
-		height: calc(100vh - 64px);
+	&.desktop {
+		padding-top: 56px;
 	}
+
+	// @media screen and (min-width: 599px) {
+	// 	height: calc(100vh - 64px);
+	// }
 }

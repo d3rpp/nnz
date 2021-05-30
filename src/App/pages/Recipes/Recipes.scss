@@ -3,6 +3,12 @@
 #recipes {
 	width: 100vw;
 
+	min-height: calc(100vh - 64px);
+
+	@media screen and (min-height: 599px) {
+		min-height: calc(100vh - 56px);
+	}
+
 	// section {
 	// 	height: calc(100vh - 456px);
 
