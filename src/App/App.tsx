@@ -24,7 +24,7 @@ export const App = () => {
 	return (
 		<Router>
 			<Header></Header>
-			<div id="container" style={{ marginTop: isMobile ? '56px' : '' }}>
+			<div id="container" style={{ marginTop: isMobile ? '64px' : '' }}>
 				<main>
 					<Switch>
 						<Route path="/" exact>

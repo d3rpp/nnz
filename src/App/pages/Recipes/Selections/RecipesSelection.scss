@@ -57,7 +57,7 @@
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 
-		min-height: calc(100vh - 456px);
+		min-height: calc(100vh - 464px);
 
 		@media screen and (min-width: 599px) {
 			// min-height: calc(100vh - 464px);
@@ -147,7 +147,7 @@
 		justify-content: center;
 		align-items: center;
 
-		height: calc(100vh - 456px);
+		height: calc(100vh - 464px);
 
 		// @media screen and (min-width: 599px) {
 		// 	height: calc(100vh - 464px);
