@@ -2,7 +2,11 @@
 
 #loading {
 	width: 100vw !important;
-	height: 100vh !important;
+	height: calc(100vh) !important;
+
+	&.mobile {
+		height: calc(100vh - 64px);
+	}
 
 	// top: 0;
 	// bottom: 0;

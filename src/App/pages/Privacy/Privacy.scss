@@ -4,9 +4,11 @@
 	color: $textColor;
 
 	margin: 16px 12.5vw;
+	margin-top: 64px !important;
 
 	&.mobile {
 		margin: 8px 16px;
+		margin-top: 64px !important;
 
 		h1,
 		h2 {

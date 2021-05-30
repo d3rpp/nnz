@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import 'firebase/analytics';
 import { isMobile } from 'mobile-device-detect';
 import React, { useEffect, useState } from 'react';
@@ -10,6 +10,8 @@ import {
 	getRemoteAsset,
 } from '../../../../firebase';
 import './RecipesSelection.scss';
+
+import LazyImage from '../../../../components/Image';
 
 export default ({ mix }: { mix: MIX }) => {
 	let [items, setItems] = useState<RecipeThumbnail[] | null>(null);
@@ -108,12 +110,16 @@ function RecipeCard({
 
 	return (
 		<Link to={`/recipes/${mix}/${fullID}`}>
-			<div
-				style={image ? { backgroundImage: `url('${image}')` } : {}}
-				className="card"
-			>
-				<span style={{ flex: '1 1 auto' }}></span>
-				<div className="header">
+			<div className="card">
+				<div className="image">
+					{image ? (
+						<LazyImage src={image} className="img" />
+					) : (
+						<div className="loading"></div>
+					)}
+				</div>
+				{/* <span style={{ flex: '1 1 auto' }}></span> */}
+				<div className="card-header">
 					<h2>{name}</h2>
 					<span>{description}</span>
 				</div>

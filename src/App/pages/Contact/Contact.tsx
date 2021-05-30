@@ -25,6 +25,11 @@ export default React.memo(() => {
 		firebase.analytics().logEvent('page_view', { page_title: 'Contact' });
 	}, []);
 
+	const recordUsageOfSocialMedia = (name: string) => {
+		// console.log(name);
+		firebase.analytics().logEvent('page_view', { page_title: name });
+	};
+
 	return (
 		<div id="contact">
 			<div
@@ -44,29 +49,55 @@ export default React.memo(() => {
 					<div className="filler" />
 					<div className="section">
 						<Phone />
-						<a href="tel:0064224521394">+64 22 452 1394</a>
+						<a
+							href="tel:0064224521394"
+							onClick={() => recordUsageOfSocialMedia('phone')}
+						>
+							+64 22 452 1394
+						</a>
 					</div>
 					<div className="section">
 						<Email />
-						<a href="mailto:info@nurturenz.co.nz">
+						<a
+							href="mailto:info@nurturenz.co.nz?subject=Inquiry%20-%20NurtureNZ"
+							onClick={() => recordUsageOfSocialMedia('email')}
+						>
 							info@nurturenz.co.nz
 						</a>
 					</div>
 					<div className="section">
 						<Instagram />
-						<a>@nurture.nz</a>
+						<a
+							href="https://www.instagram.com/nurture_nz/"
+							target="_blank"
+							onClick={() =>
+								recordUsageOfSocialMedia('instagram')
+							}
+						>
+							@nurture.nz
+						</a>
 					</div>
 					<div className="filler" />
 					<div className="filler" />
 					<div className="section">
 						<Facebook />
-						<a href="https://www.facebook.com/nurturenz.co.nz">
+						<a
+							href="https://www.facebook.com/nurturenz.co.nz"
+							target="_blank"
+							onClick={() => recordUsageOfSocialMedia('facebook')}
+						>
 							NurtureNZ
 						</a>
 					</div>
 					<div className="section">
 						<Pinterest />
-						<a href="">NurtureNZ</a>
+						<a
+							href="https://pintrest.com"
+							target="_blank"
+							onClick={() => recordUsageOfSocialMedia('pintrest')}
+						>
+							NurtureNZ
+						</a>
 					</div>
 					<div className="section">
 						{/* Adding this icon brings me PAIN */}
@@ -79,7 +110,13 @@ export default React.memo(() => {
 						>
 							<path d="m432.734375 112.464844c-53.742187 0-97.464844-43.722656-97.464844-97.464844 0-8.285156-6.714843-15-15-15h-80.335937c-8.28125 0-15 6.714844-15 15v329.367188c0 31.59375-25.707032 57.296874-57.300782 57.296874s-57.296874-25.703124-57.296874-57.296874c0-31.597657 25.703124-57.300782 57.296874-57.300782 8.285157 0 15-6.714844 15-15v-80.335937c0-8.28125-6.714843-15-15-15-92.433593 0-167.632812 75.203125-167.632812 167.636719 0 92.433593 75.199219 167.632812 167.632812 167.632812 92.433594 0 167.636719-75.199219 167.636719-167.632812v-145.792969c29.851563 15.917969 63.074219 24.226562 97.464844 24.226562 8.285156 0 15-6.714843 15-15v-80.335937c0-8.28125-6.714844-15-15-15zm0 0" />
 						</svg>
-						<a>@nurture.nz</a>
+						<a
+							href=""
+							target="_blank"
+							onClick={() => recordUsageOfSocialMedia('tiktok')}
+						>
+							@nurture.nz
+						</a>
 					</div>
 					<div className="filler" />
 				</div>

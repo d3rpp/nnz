@@ -30,6 +30,15 @@ export default ({
 					placeholder
 				) : (
 					<img src={src} alt={alt} className={className} />
+					// <div
+					// 	style={{
+					// 		backgroundImage: `url('${src}')`,
+					// 		width: '100%',
+					// 		height: '100%',
+					// 		backgroundPosition: 'center center',
+					// 		backgroundSize: 'cover',
+					// 	}}
+					// />
 				);
 			}}
 		</ProgressiveImage>

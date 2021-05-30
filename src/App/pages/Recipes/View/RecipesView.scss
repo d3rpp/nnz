@@ -73,6 +73,12 @@
 
 		color: $textColor;
 
+		margin-top: 64px;
+
+		&.mobile {
+			margin-top: 0;
+		}
+
 		background-size: cover;
 		// background-attachment: fixed;
 		background-position: center center;
@@ -81,8 +87,8 @@
 		&.loading {
 			.loading-container {
 				position: absolute;
-				// top:64px;
-				top: 56px;
+				top: 64px;
+				// top: 56px;
 				left: 0;
 				width: 100vw;
 				height: 400px;

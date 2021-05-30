@@ -92,8 +92,8 @@ export default React.memo(() => {
 					<br />
 					<br />
 					For some amazing ideas that we have made, head on over to
-					the <Link to="/recipes">Recipes</Link> Section for some
-					ideas on how the mix can be used.
+					the <Link to="/recipes">Recipes</Link> to take a look at
+					them!
 				</p>
 			</section>
 		</div>
