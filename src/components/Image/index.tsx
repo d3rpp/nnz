@@ -2,32 +2,30 @@ import React from 'react';
 import ProgressiveImage from 'react-progressive-graceful-image';
 import './image.scss';
 
-const placeholder = (
-	<div className="img-loading-container">
-		<div className="lds-ellipsis">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
-	</div>
-);
-
 export default ({
 	src,
 	alt,
 	className,
+	colour,
 }: {
 	src: string;
 	alt?: string;
 	className?: string;
+	colour: string;
 }) => {
 	return (
 		<ProgressiveImage src={src} placeholder="">
 			{/* @ts-ignore */}
 			{(src, loading) => {
 				return loading ? (
-					placeholder
+					<div className="img-loading-container">
+						<div className="lds-ellipsis">
+							<div style={{ backgroundColor: colour }}></div>
+							<div style={{ backgroundColor: colour }}></div>
+							<div style={{ backgroundColor: colour }}></div>
+							<div style={{ backgroundColor: colour }}></div>
+						</div>
+					</div>
 				) : (
 					<img src={src} alt={alt} className={className} />
 					// <div

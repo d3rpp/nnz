@@ -1,6 +1,7 @@
 @import '../../../../lib.scss';
 
 #recipes-index {
+	height: auto;
 	.header {
 		width: 100vw;
 		height: 400px;
@@ -13,9 +14,7 @@
 
 		margin-top: 64px;
 
-		&.mobile {
-			margin-top: 0;
-		}
+		
 
 		background-image: url('../../../../assets/landing.jpg');
 		background-color: #222222bb;
@@ -23,9 +22,17 @@
 		background-attachment: fixed;
 		background-position: center center;
 
+		&.mobile {
+			margin-top: 0;
+			height: calc(100vh - 64px);
+			background-attachment: scroll;
+		}
+
 		.header-wrapper {
 			width: 400px;
 			height: 100px;
+
+			box-shadow: 2px 2px 6px #222222bb;
 
 			&.mobile {
 				height: 100%;
@@ -47,6 +54,8 @@
 			}
 		}
 	}
+	// background-color: lighten($color: $color, $amount: 50);
+	// background-color: #e5e5e5;
 
 	.options {
 		display: flex;
@@ -68,11 +77,27 @@
 			margin: 0 5vw;
 		}
 
+		.first {
+			@include fadeUp(50ms);
+		}
+
+		.second {
+			@include fadeUp(150ms);
+		}
+
+		.third {
+			@include fadeUp(250ms);
+		}
+
 		a {
 			width: 95%;
 			height: 90%;
 
 			margin: 16px 16px;
+
+			border-radius: 3px;
+
+			box-shadow: 2px 2px 6px #222222bb;
 
 			@media screen and (min-width: 599px) {
 				margin: 16px 32px;
@@ -81,16 +106,20 @@
 			text-decoration: none;
 
 			div.card {
-				background-color: #e5e5e5;
-				border-radius: 3px;
+				background-color: #fff;
+				// border-radius: 3px;
 
 				div.media {
 					height: 150px;
+					width: 100%;
 
-					background-size: cover;
-					background-position: center center;
-					background-repeat: no-repeat;
-					background-size: 80%;
+					img {
+						width: 80%;
+					}
+
+					display: flex;
+					justify-content: center;
+					align-items: center;
 				}
 			}
 
@@ -114,12 +143,12 @@
 					background-color: darken($color: #ff8a6c, $amount: 2);
 
 					span {
-						color: $textColor;
+						color: #fff;
 					}
 				}
 
 				&.sweet {
-					background-color: darken($color: #ffce3b, $amount: 10);
+					background-color: darken($color: #ffce3b, $amount: 2);
 
 					span {
 						color: #111;
@@ -130,7 +159,7 @@
 					background-color: darken($color: #3f7439, $amount: 2);
 
 					span {
-						color: $textColor;
+						color: #fff;
 					}
 				}
 			}

@@ -15,7 +15,7 @@
 	],
 	"theme_color": "#00513b",
 	"background_color": "#00513b",
-	"display": "standalone",
+	"display": "browser",
 	"lang": "en-NZ",
 	"categories": [
 		"food",

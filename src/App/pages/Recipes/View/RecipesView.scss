@@ -77,7 +77,10 @@
 
 		&.mobile {
 			margin-top: 0;
+			height: calc(100vh - 64px);
 		}
+
+		overflow: hidden;
 
 		background-size: cover;
 		// background-attachment: fixed;
@@ -163,9 +166,13 @@
 
 		.header-wrapper {
 			// width: 400px;
-			// height: 100px;
+			height: 250px;
+
+			margin: 75px 0;
 
 			// position: absolute;
+
+			box-shadow: 2px 2px 6px #222222bb;
 
 			z-index: 100;
 
@@ -180,13 +187,13 @@
 
 			&.mobile {
 				width: 100%;
-				height: 100%;
+				height: calc(100vh - 64px);
 
 				.details {
 					flex-direction: column;
 
 					span {
-						margin: 16px 0;
+						margin: 16px;
 					}
 				}
 			}
@@ -220,6 +227,10 @@
 				align-items: center;
 
 				@include fadeUp(200ms);
+
+				svg {
+					margin-bottom: 8px;
+				}
 			}
 		}
 	}
@@ -269,10 +280,34 @@
 
 			margin-bottom: 16px;
 
+			box-shadow: 2px 2px 6px #222222bb;
+
+			&.desc {
+				@include fadeUp(150ms);
+			}
+
+			&.ing {
+				@include fadeUp(250ms);
+
+				* span {
+					overflow: visible;
+				}
+			}
+
+			&.meth {
+				@include fadeUp(350ms);
+
+				margin-bottom: 64px;
+			}
+
 			.MuiCardHeader-title {
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
+
+				h1 {
+					margin: 0;
+				}
 
 				svg {
 					margin-right: 12px;
@@ -305,38 +340,58 @@
 					justify-content: center;
 					align-items: center;
 				}
+
+				a {
+					color: #222;
+
+					&:visited {
+						color: #222;
+					}
+				}
 			}
 
 			.methodList {
-				&.mobile {
-					.method-list-item {
+				.method-list-item {
+					&.mobile {
 						.MuiListItem-root {
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+
 							h1,
 							p,
 							em {
 								width: 75vw;
 								margin: 0 auto;
+								overflow: visible;
 							}
 
 							h1 {
+								margin-left: 0;
 								font-size: 16px;
 								margin-bottom: 16px;
 							}
 
-							p {
+							p.desc {
 								margin-left: 0;
 							}
 
-							em {
+							p.em {
+								margin-left: 4px;
 								margin-top: 8px;
-								width: 100%;
-								text-align: center;
+								width: 80vw;
+								font-style: italic;
+								font-weight: bold;
+								// text-align: center;
+							}
+
+							hr {
+								width: 50vw;
+								margin: 0 auto;
 							}
 						}
 					}
-				}
-
-				.method-list-item {
 					.MuiListItem-root {
 						display: flex;
 						flex-direction: column;
@@ -348,6 +403,7 @@
 						em {
 							width: 90%;
 							text-align: left;
+							overflow: visible;
 						}
 
 						em {
@@ -359,12 +415,13 @@
 							margin-bottom: 16px;
 						}
 
-						p {
+						p.desc {
 							margin-left: 8px;
 						}
 
-						em {
+						p.em {
 							margin-left: 16px;
+							width: 90vw;
 						}
 
 						margin: 16px 0;

@@ -73,7 +73,11 @@ function RecipeView({ recipe }: { recipe: Recipe }) {
 	return (
 		<div id="recipe-container">
 			<div
-				className={banner != null ? 'header' : 'header loading'}
+				className={
+					'header' +
+					(banner != null ? '' : ' loading') +
+					(isMobile ? ' mobile' : '')
+				}
 				style={
 					banner != null
 						? { backgroundImage: `url('${banner}')` }
@@ -117,10 +121,10 @@ function RecipeView({ recipe }: { recipe: Recipe }) {
 				)}
 			</div>
 			<div className={isMobile ? 'recipe mobile' : 'recipe'}>
-				<Card>
+				<Card className="desc">
 					<CardContent>{recipe.data.description}</CardContent>
 				</Card>
-				<Card>
+				<Card className="ing">
 					<CardHeader
 						title={
 							<>
@@ -137,9 +141,21 @@ function RecipeView({ recipe }: { recipe: Recipe }) {
 										<span className="amount">
 											{value.amount} {value.unit}
 										</span>
-										<span className="name">
+										<a
+											className="name"
+											href={value.link}
+											target={
+												value.link
+													? value.link!.startsWith(
+															'/'
+													  )
+														? ''
+														: '_blank'
+													: ''
+											}
+										>
 											{value.name}
-										</span>
+										</a>
 									</div>
 								);
 							})}
@@ -176,7 +192,7 @@ function RecipeView({ recipe }: { recipe: Recipe }) {
 						)}
 					</CardContent>
 				</Card>
-				<Card>
+				<Card className="meth">
 					<CardHeader
 						title={
 							<>
@@ -195,16 +211,27 @@ function RecipeView({ recipe }: { recipe: Recipe }) {
 								({ description, title, note }, index) => {
 									return (
 										<div
-											className="method-list-item"
+											className={
+												'method-list-item' +
+												(isMobile ? ' mobile' : '')
+											}
 											key={index}
 										>
-											<ListItem>
+											<ListItem
+												className={
+													isMobile ? ' mobile' : ''
+												}
+											>
 												<h1>
 													Step {index + 1}: {title}
 												</h1>
-												<p>{description}</p>
+												<p className="desc">
+													{description}
+												</p>
 												{note ? (
-													<em>Tip: {note}</em>
+													<p className="em">
+														Tip: {note}
+													</p>
 												) : (
 													' '
 												)}

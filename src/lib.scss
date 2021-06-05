@@ -27,12 +27,20 @@ $greenSheen: #6eaea1;
 $bangladeshGreen: #006a4e;
 
 $amazon: #3b7a57;
+$safariDevTools: #41912a;
+$ayushsColour: darken(
+	$color: #2ecf53,
+	$amount: 10,
+);
 
 $brilliantAzure: #3399ff;
 $cyanAzure: #4e82b4;
 $cyanBlueAzure: #4682bf;
 
-$color: $bangladeshGreen;
+// SETS BACKGROUND COLOUR EVERYWHERE
+$color: $amazon;
+
+// SETS TEXT COLOUR
 $textColor: #e5e5e5;
 $easing: cubic-beizer(0.2, 0, 0.4, 1);
 

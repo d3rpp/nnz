@@ -6,7 +6,7 @@ import 'firebase/analytics';
 
 import { isMobile } from 'mobile-device-detect';
 
-export default () => {
+export default React.memo(() => {
 	useEffect(() => {
 		firebase.analytics().logEvent('page_view', { page_title: 'Shop' });
 	}, []);
@@ -26,12 +26,13 @@ export default () => {
 				</div>
 			</div>
 
-			<section className="main">
+			<section className={isMobile ? 'main mobile' : 'main'}>
 				<h1>Coming Soon</h1>
 				<span>
-					We will announce on our facebook page when this is ready!
+					Stay tuned for our online shop. Sale though Instagram and
+					email launches June 11th!
 				</span>
 			</section>
 		</div>
 	);
-};
+});

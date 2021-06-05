@@ -8,7 +8,7 @@
 		"url:*": [
 			"@parcel/transformer-raw"
 		],
-		"*.{jpg,jpeg,png,webm,ico}": [
+		"*.{jpg,jpeg,png,webm,ico,webp}": [
 			"@parcel/transformer-raw"
 		],
 		"*.html": [
@@ -61,7 +61,7 @@
 		"*.html": "@parcel/packager-html",
 		"*.css": "@parcel/packager-css",
 		"*.js": "@parcel/packager-js",
-		"*.{jpg,jpeg,png,webm,ico,webmanifest}": "@parcel/packager-raw"
+		"*.{jpg,jpeg,png,webm,ico,webmanifest,webp}": "@parcel/packager-raw"
 	},
 	"resolvers": [
 		"@parcel/resolver-default"

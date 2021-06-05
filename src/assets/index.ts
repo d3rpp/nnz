@@ -11,8 +11,6 @@ import IconLogoWhite from './NW.png';
 //@ts-ignore
 import LogoWhite from './NurtureNZW.png';
 
-import * as People from './people';
-
 export {
 	Landing,
 	LandingMobile,
@@ -20,5 +18,4 @@ export {
 	LogoBlack,
 	IconLogoWhite,
 	LogoWhite,
-	People,
 };

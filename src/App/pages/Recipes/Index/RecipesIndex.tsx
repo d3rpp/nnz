@@ -1,6 +1,7 @@
 import { isMobile } from 'mobile-device-detect';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LazyImage from '../../../../components/Image';
 
 import { LogoBlack } from '../../../../assets';
 
@@ -22,12 +23,15 @@ export default ({ url }: { url: string }) => {
 				</div>
 			</div>
 			<div className="options">
-				<Link to={`${url}/chocolate`}>
+				<Link to={`${url}/chocolate`} className="first">
 					<div className="card">
-						<div
+						{/* <div
 							className="media"
 							style={{ backgroundImage: `url('${LogoBlack}')` }}
-						/>
+						/> */}
+						<div className="media">
+							<LazyImage src={LogoBlack} colour="#222222bb" />
+						</div>
 						<div className="text chocolate">
 							<span>
 								Chocolate
@@ -37,12 +41,11 @@ export default ({ url }: { url: string }) => {
 						</div>
 					</div>
 				</Link>
-				<Link to={`${url}/sweet`}>
+				<Link to={`${url}/sweet`} className="second">
 					<div className="card">
-						<div
-							className="media"
-							style={{ backgroundImage: `url('${LogoBlack}')` }}
-						/>
+						<div className="media">
+							<LazyImage src={LogoBlack} colour="#222222bb" />
+						</div>
 						<div className="text sweet">
 							<span>
 								Sweet
@@ -52,12 +55,11 @@ export default ({ url }: { url: string }) => {
 						</div>
 					</div>
 				</Link>
-				<Link to={`${url}/savoury`}>
+				<Link to={`${url}/savoury`} className="third">
 					<div className="card">
-						<div
-							className="media"
-							style={{ backgroundImage: `url('${LogoBlack}')` }}
-						/>
+						<div className="media">
+							<LazyImage src={LogoBlack} colour="#222222bb" />
+						</div>
 						<div className="text savoury">
 							<span>
 								Savoury

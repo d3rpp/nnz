@@ -62,19 +62,25 @@ export default React.memo(() => {
 
 			<ul>
 				<li>Provide, operate, and maintain our website</li>
-				<li>Improve, personalize, and expand our website</li>
+				<li>Improve, and expand our website</li>
 				<li>Understand and analyze how you use our website</li>
-				<li>
-					Develop new products, services, features, and functionality
-				</li>
-				<li>
-					Communicate with you, either directly or through one of our
-					partners, including for customer service, to provide you
-					with updates and other information relating to the website,
-					and for marketing and promotional purposes
-				</li>
-				<li>Send you emails</li>
+				<li>Develop new services, features, and functionality</li>
 				<li>Find and prevent fraud</li>
+				<li>
+					Releasing metrics on how the website is used (public and
+					anonymous)
+				</li>
+			</ul>
+
+			<h2>How we do not use your information</h2>
+
+			<p>
+				We will not be using your information for any of the following
+			</p>
+
+			<ul>
+				<li>Directly contacting you</li>
+				<li>Make an income (we will not sell your data)</li>
 			</ul>
 
 			<h2>Log Files</h2>

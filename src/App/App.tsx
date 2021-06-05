@@ -22,40 +22,44 @@ const ShopPage = lazy(() => import('./pages/Shop/Shop').then((m) => m));
 
 export const App = () => {
 	return (
-		<Router>
-			<Header></Header>
-			<div id="container" style={{ marginTop: isMobile ? '64px' : '' }}>
+		<div id="container" className={isMobile ? 'mobile' : 'desktop'}>
+			<Router>
+				<Header />
 				<main>
 					<Switch>
 						<Route path="/" exact>
 							<Suspense fallback={<Loading />}>
 								<IndexPage />
+								<Footer />
 							</Suspense>
 						</Route>
 						<Route path="/contact" exact>
 							<Suspense fallback={<Loading />}>
 								<ContactPage />
+								<Footer />
 							</Suspense>
 						</Route>
 						<Route path="/privacy" exact>
 							<Suspense fallback={<Loading />}>
 								<PrivacyPolicy />
+								<Footer />
 							</Suspense>
 						</Route>
 						<Route path="/recipes">
 							<Suspense fallback={<Loading />}>
 								<RecipesPage />
+								<Footer />
 							</Suspense>
 						</Route>
 						<Route path="/shop">
 							<Suspense fallback={<Loading />}>
 								<ShopPage />
+								<Footer />
 							</Suspense>
 						</Route>
 					</Switch>
-					<Footer />
 				</main>
-			</div>
-		</Router>
+			</Router>
+		</div>
 	);
 };

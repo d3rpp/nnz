@@ -1,5 +1,5 @@
 @import '../../lib.scss';
-$height: 64px;
+$height: 64px * 2;
 
 footer {
 	height: $height;
@@ -11,8 +11,11 @@ footer {
 		color: $textColor;
 	}
 
+	padding: 16px;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
 }

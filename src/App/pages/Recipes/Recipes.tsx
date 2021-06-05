@@ -14,7 +14,7 @@ let ViewRecipePage = React.lazy(() =>
 	import('./View/RecipesView').then((m) => m)
 );
 
-export default () => {
+export default React.memo(() => {
 	useEffect(() => {
 		firebase.analytics().logEvent('page_view', { page_title: 'Recipes' });
 	}, []);
@@ -52,4 +52,4 @@ export default () => {
 			</section>
 		</div>
 	);
-};
+});

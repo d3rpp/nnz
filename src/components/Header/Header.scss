@@ -68,22 +68,24 @@ header {
 	}
 
 	&#mobile {
-		position: absolute;
-		top: 0;
-		left: 0;
+		// position: relative;
+		// top: 0;
+		// left: 0;
 
 		width: 100vw;
 		height: 64px;
 
 		z-index: 10077;
 
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 64px auto 64px;
 
 		img.logo {
-			// width: 80%;
-			height: 80%;
+			width: 90%;
+			height: auto;
+			// aspect-ratio: ;
+			// height: 80%;
+			margin: auto auto;
 
 			// margin-left: 8px;
 
@@ -96,9 +98,9 @@ header {
 			height: 64px;
 			width: 64px;
 
-			position: absolute;
-			top: 0;
-			right: 0;
+			// position: absolute;
+			// top: 0;
+			// right: 0;
 
 			background: transparent;
 			border: none;
@@ -111,9 +113,6 @@ header {
 			// }
 		}
 	}
-
-	width: 100vw;
-	height: 64px;
 
 	// @media screen and (min-width: 599px) {
 	// 	height: 64px;

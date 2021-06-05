@@ -1,9 +1,6 @@
 @import '../../../../lib.scss';
 
 #recipes-selections {
-	width: 100vw;
-	min-height: 100vh;
-
 	.header {
 		width: 100vw;
 		height: 400px;
@@ -16,19 +13,22 @@
 
 		margin-top: 64px;
 
-		&.mobile {
-			margin-top: 0;
-		}
-
 		background-image: url('../../../../assets/landing.jpg');
 		background-color: #222222bb;
 		background-size: cover;
 		background-attachment: fixed;
 		background-position: center center;
 
+		&.mobile {
+			margin-top: 0;
+			background-attachment: scroll;
+		}
+
 		.header-wrapper {
 			width: 400px;
 			height: 100px;
+
+			box-shadow: 2px 2px 6px #222222bb;
 
 			&.mobile {
 				height: 100%;
@@ -45,6 +45,8 @@
 
 			h1 {
 				@include fadeUp(50ms);
+
+				text-align: center;
 
 				transition: background-color 500ms $easing;
 			}
@@ -65,22 +67,16 @@
 
 		min-height: calc(100vh - 464px);
 
-		@media screen and (min-width: 599px) {
-			// min-height: calc(100vh - 464px);
-
-			flex-direction: row;
-		}
-
 		margin: 0 16px;
 
-		padding-top: 16px;
+		padding: 32px 0;
 
 		@media screen and (min-width: 599px) {
 			margin: 0 15vw;
 		}
 
 		a {
-			width: 95%;
+			width: 90%;
 			height: 300px;
 
 			text-decoration: none;
@@ -89,9 +85,16 @@
 
 			margin: 16px auto;
 
-			@media screen and (min-width: 599px) {
-				margin: 0 auto;
-				width: 95%;
+			box-shadow: 2px 2px 6px #222222bb;
+
+			// @media screen and (min-width: 599px) {
+			// 	margin: 0 auto;
+			// 	width: 95%;
+			// }
+
+			&.mobile {
+				margin: 8px auto;
+				width: 100%;
 			}
 
 			.card {
@@ -105,11 +108,6 @@
 				background-repeat: no-repeat;
 
 				background-color: #222222bb;
-
-				// display: flex;
-				// flex-direction: column;
-				// justify-content: center;
-				// align-items: center;
 
 				display: grid;
 				grid-template-rows: 70% 30%;
@@ -127,6 +125,8 @@
 						height: 100%;
 						width: 100%;
 						overflow: hidden;
+
+						// @include fadeUp(300ms);
 					}
 				}
 

@@ -17,14 +17,14 @@ export default ({ mix }: { mix: MIX }) => {
 	let [items, setItems] = useState<RecipeThumbnail[] | null>(null);
 
 	let titleText = {
-		chocolate: 'Chocolate Base Mix',
-		sweet: 'Sweet Base Mix',
-		savoury: 'Savoury Base Mix ',
+		chocolate: 'Chocolate',
+		sweet: 'Sweet',
+		savoury: 'Savoury',
 	};
 
 	useEffect(() => {
 		listRecipes(mix).then((value: RecipeThumbnail[]) => {
-			console.log(value);
+			// console.log(value);
 			setItems(value);
 		});
 
@@ -39,13 +39,16 @@ export default ({ mix }: { mix: MIX }) => {
 
 	return (
 		<div id="recipes-selections">
-			<div className="header" role="header">
+			<div
+				className={isMobile ? 'header mobile' : 'header'}
+				role="header"
+			>
 				<div
 					className={
 						isMobile ? 'header-wrapper mobile' : 'header-wrapper'
 					}
 				>
-					<h1>{titleText[mix]} Recipes</h1>
+					<h1>{titleText[mix]} Base Mix Recipes</h1>
 				</div>
 			</div>
 			{items == null ? (
@@ -106,16 +109,34 @@ function RecipeCard({
 
 	useEffect(() => {
 		getRemoteAsset(bannerImage).then((val) => setImage(val));
+
+		return () => {
+			image = '';
+		};
 	}, []);
 
 	return (
-		<Link to={`/recipes/${mix}/${fullID}`}>
+		<Link
+			to={`/recipes/${mix}/${fullID}`}
+			className={isMobile ? 'mobile' : ''}
+		>
 			<div className="card">
 				<div className="image">
 					{image ? (
-						<LazyImage src={image} className="img" />
+						<LazyImage
+							src={image}
+							className="img"
+							colour="#e5e5e5"
+						/>
 					) : (
-						<div className="loading"></div>
+						<div className="loading">
+							<div className="lds-ellipsis">
+								<div></div>
+								<div></div>
+								<div></div>
+								<div></div>
+							</div>
+						</div>
 					)}
 				</div>
 				{/* <span style={{ flex: '1 1 auto' }}></span> */}

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { isMobile } from 'mobile-device-detect';
 import './Header.scss';
 
-//@ts-ignore
-import img from '../../assets/NurtureNZW.png';
+import { LogoWhite as img } from '../../assets';
 
 import { Link } from 'react-router-dom';
 
@@ -26,7 +25,7 @@ const DesktopHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 			<Link to="/">Home</Link>
 			<Link to="/recipes">Recipes</Link>
 			<Link to="/" className="logo">
-				<img src={img} alt="The NurtureNZ Logo" />
+				<img src={img} alt="The NurtureNZ Logo" height="80%" />
 			</Link>
 			<Link to="/shop">Shop</Link>
 			<Link to="/contact">Contact</Link>
@@ -47,7 +46,13 @@ const MobileHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 
 	return (
 		<header id="mobile">
-			<img src={img} alt="The NurtureNZ Logo" className="logo" />
+			<div className="filler" />
+			<img
+				src={img}
+				alt="The NurtureNZ Logo"
+				className="logo"
+				height="80%"
+			/>
 
 			<Menu
 				id="nav-menu"

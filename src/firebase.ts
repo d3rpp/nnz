@@ -18,6 +18,8 @@ function init() {
 	// firebase.performance().dataCollectionEnabled = false;
 
 	// TODO: Do i add this?
+	// ! NO YOU SHOULD NOT
+	// * PLEASE DO NOT UNCOMMENT THIS LINE
 	// firebase
 	// 	.analytics()
 	// 	.logEvent('InitialPageLoad', { userAgent: navigator.userAgent });
@@ -55,11 +57,13 @@ interface RecipeData {
 		name: string;
 		amount: string;
 		unit: string;
+		link?: string;
 	}[];
 	optionalExtras?: {
 		name: string;
 		amount: string;
 		unit: string;
+		link?: string;
 	}[];
 	method: {
 		title: string;
