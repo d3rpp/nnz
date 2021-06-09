@@ -30,7 +30,7 @@ export default React.memo(() => {
 				<h1>Coming Soon</h1>
 				<span>
 					Stay tuned for our online shop. Sale though Instagram and
-					email launches June 11th!
+					email has launched!
 				</span>
 			</section>
 		</div>
