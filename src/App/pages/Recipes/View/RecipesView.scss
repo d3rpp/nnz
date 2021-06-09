@@ -192,8 +192,11 @@
 				.details {
 					flex-direction: column;
 
+					overflow: hidden;
+
 					span {
 						margin: 16px;
+						overflow: visible;
 					}
 				}
 			}
@@ -202,6 +205,8 @@
 				@include fadeUp(50ms);
 
 				transition: background-color 500ms $easing;
+
+				overflow: visible;
 
 				margin: 32px 0;
 			}
@@ -218,6 +223,10 @@
 				flex-direction: column;
 			}
 
+			p {
+				overflow-y: visible;
+			}
+
 			span {
 				width: 200px;
 
@@ -225,6 +234,8 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+
+				overflow: visible;
 
 				@include fadeUp(200ms);
 
