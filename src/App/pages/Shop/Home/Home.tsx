@@ -1,14 +1,13 @@
+import Add from '@material-ui/icons/Add';
+import Remove from '@material-ui/icons/Remove';
 import { isMobile } from 'mobile-device-detect';
-import React from 'react';
+import React, { useState } from 'react';
+import { ShopState } from '../util/ShopUtils';
 import './Home.scss';
 
-export default ({
-	state,
-	dispatchFunction,
-}: {
-	state: any;
-	dispatchFunction: Function;
-}) => {
+export default () => {
+	const [shopState, setShopState] = useState<ShopState>(new ShopState({}));
+
 	return (
 		<div id="shop">
 			<div
@@ -25,11 +24,70 @@ export default ({
 			</div>
 
 			<section className={isMobile ? 'main mobile' : 'main'}>
-				<h1>Coming Soon</h1>
-				<span>
-					Stay tuned for our online shop. Sale though Instagram and
-					email has launched!
-				</span>
+				<div className="selection">
+					<div className="chocolate">
+						<div className="image"></div>
+						<div className="input">
+							<button>
+								<Add />
+							</button>
+							<input
+								type="number"
+								value={
+									shopState.getMixQuantity('chocolate').valid
+										? shopState.getMixQuantity('chocolate')
+												.quantity
+										: 0
+								}
+							/>
+							<button>
+								<Remove />
+							</button>
+						</div>
+					</div>
+					<div className="sweet">
+						<div className="image"></div>
+						<div className="input">
+							<button>
+								<Add />
+							</button>
+							<input
+								type="text"
+								
+								value={
+									shopState.getMixQuantity('sweet').valid
+										? shopState.getMixQuantity('sweet')
+												.quantity
+										: 0
+								}
+							/>
+							<button>
+								<Remove />
+							</button>
+						</div>
+					</div>
+					<div className="savoury">
+						<div className="image"></div>
+						<div className="input">
+							<button>
+								<Add />
+							</button>
+							<input
+								type="number"
+								value={
+									shopState.getMixQuantity('savoury').valid
+										? shopState.getMixQuantity('savoury')
+												.quantity
+										: 0
+								}
+							/>
+							<button>
+								<Remove />
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className="checkout"></div>
 			</section>
 		</div>
 	);

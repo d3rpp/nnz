@@ -55,23 +55,23 @@
 	section {
 		height: calc(100vh - 464px);
 
-		// @media screen and (min-width: 599px) {
-		// 	height: calc(100vh - 464px);
-		// }
+		.selection {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 
-		&.mobile {
-			height: calc(100vh - 64px);
+			div {
+				margin: 16px 8px;
+
+				.input {
+					height: 64px;
+
+					width: 100%;
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr;
+				}
+			}
 		}
-
-		padding: 0 16px;
-
-		text-align: center;
-
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-
-		color: $textColor;
 	}
 }
