@@ -1,6 +1,11 @@
 import { isMobile } from 'mobile-device-detect';
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
 import Loading from '../components/Loading/Loading';
@@ -50,6 +55,15 @@ export const App = () => {
 								<RecipesPage />
 								<Footer />
 							</Suspense>
+						</Route>
+						<Route path="/chocolate" exact>
+							<Redirect to="/recipes/chocolate" />
+						</Route>
+						<Route path="/sweet" exact>
+							<Redirect to="/recipes/sweet" />
+						</Route>
+						<Route path="/savoury" exact>
+							<Redirect to="/recipes/savoury" />
 						</Route>
 						<Route path="/shop">
 							<Suspense fallback={<Loading />}>
