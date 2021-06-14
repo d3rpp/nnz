@@ -6,9 +6,8 @@ export default () => {
 	return (
 		<footer>
 			<span>
-				&copy; NurtureNZ 2021 |{' '}
-				<Link to="/privacy">Privacy Policy</Link> | Made with &#9829; by
-				Hudson Curren
+				&copy; Hudson Curren 2021 |{' '}
+				<Link to="/privacy">Privacy Policy</Link> | Made for NurtureNZ
 			</span>
 
 			<span>
