@@ -168,6 +168,7 @@ declare module '@paypal/react-paypal-js' {
 			data: OnCancelOrderData,
 			actions: OnCancelOrderActions
 		) => void;
+		disabled?: boolean;
 		onClick?: () => void;
 		onError?: () => void;
 		onInit?: () => void;
