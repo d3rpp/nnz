@@ -7,13 +7,32 @@ import { LogoBlack } from '../../../assets';
 import firebase from 'firebase/app';
 import 'firebase/analytics';
 
-import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import Button from '@material-ui/core/Button';
+
+import {
+	CreateOrderActions,
+	OnApproveOrderActions,
+	OnApproveOrderData,
+	OnCancelledOrderActions,
+	OnCancelledOrderData,
+	PayPalScriptProvider,
+	PurchaseUnit,
+} from '@paypal/react-paypal-js';
 
 import { isMobile } from 'mobile-device-detect';
 
 import Add from '@material-ui/icons/Add';
 import Remove from '@material-ui/icons/Remove';
-import { PayPalButtons } from '@paypal/react-paypal-js';
+
+//@ts-ignore
+import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+// import {  } from '@paypal/react-paypal-js';
+
+type orderStatus =
+	| { status: 'progress' }
+	| { status: 'cancelled' }
+	| { status: 'error' }
+	| { status: 'approved'; orderID: string };
 
 export default React.memo(() => {
 	// let choc = 0;
@@ -36,14 +55,53 @@ export default React.memo(() => {
 	let [sweetQTY, setSweetQTY] = useState(0);
 	let [savouryQTY, setSavouryQTY] = useState(0);
 
-	// useEffect(() => {
-	// 	window.sessionStorage.setItem(
-	// 		'cart',
-	// 		JSON.stringify({ choc: chocQTY, sw: sweetQTY, sav: savouryQTY })
-	// 	);
-	// }, [chocQTY, sweetQTY, savouryQTY]);
+	let [checkout, setCheckout] = useState(false);
+	let [showResult, setShowResult] = useState(false);
+	let [result, setResult] = useState<orderStatus>({ status: 'progress' });
 
-	const totalCost = () => {
+	let [complete, setComplete] = useState(false);
+
+	let [{ isResolved }, _] = usePayPalScriptReducer();
+
+	function inc(code: 'ch' | 'sw' | 'sa'): void {
+		if (complete) return;
+
+		switch (code) {
+			case 'ch':
+				setChocQTY(chocQTY + 1);
+				break;
+			case 'sw':
+				setSweetQTY(sweetQTY + 1);
+				break;
+			case 'sa':
+				setSavouryQTY(savouryQTY + 1);
+		}
+	}
+
+	function dec(code: 'ch' | 'sw' | 'sa'): void {
+		if (complete) return;
+
+		switch (code) {
+			case 'ch':
+				setChocQTY(chocQTY - 1);
+				break;
+			case 'sw':
+				setSweetQTY(sweetQTY - 1);
+				break;
+			case 'sa':
+				setSavouryQTY(savouryQTY - 1);
+		}
+	}
+
+	function enableCheckout() {
+		// dispatch({
+		// 	type: 'setLoadingStatus',
+		// 	value: 'pending',
+		// });
+		setCheckout(true);
+	}
+
+	const totalCost = (): string => {
 		return ((chocQTY + sweetQTY + savouryQTY) * 6.99).toFixed(2);
 	};
 
@@ -52,9 +110,9 @@ export default React.memo(() => {
 	return (
 		<PayPalScriptProvider
 			options={{
-				'client-id': 'sb',
+				'client-id':
+					'ATT7kGCaTEi5EGQ-Zk1hyxbkeNoKR8rm95fjcIpyNHoJ_sQ5-DCRd3unkZG9AXlYUX9Ci8dLIN3jIpbD',
 				currency: 'NZD',
-				commit: true,
 			}}
 		>
 			<div id="shop">
@@ -93,8 +151,8 @@ export default React.memo(() => {
 								</div>
 								<div className="input">
 									<button
-										onClick={() => setChocQTY(chocQTY - 1)}
-										disabled={chocQTY <= 0}
+										onClick={() => dec('ch')}
+										disabled={chocQTY <= 0 || complete}
 									>
 										<Remove />
 									</button>
@@ -108,8 +166,10 @@ export default React.memo(() => {
 										}}
 									/>
 									<button
-										onClick={() => setChocQTY(chocQTY + 1)}
-										disabled={chocQTY >= maxProduct}
+										onClick={() => inc('ch')}
+										disabled={
+											chocQTY >= maxProduct || complete
+										}
 									>
 										<Add />
 									</button>
@@ -133,10 +193,8 @@ export default React.memo(() => {
 								</div>
 								<div className="input">
 									<button
-										onClick={() =>
-											setSweetQTY(sweetQTY - 1)
-										}
-										disabled={sweetQTY <= 0}
+										onClick={() => dec('sw')}
+										disabled={sweetQTY <= 0 || complete}
 									>
 										<Remove />
 									</button>
@@ -150,10 +208,10 @@ export default React.memo(() => {
 										}}
 									/>
 									<button
-										onClick={() =>
-											setSweetQTY(sweetQTY + 1)
+										onClick={() => inc('sw')}
+										disabled={
+											sweetQTY >= maxProduct || complete
 										}
-										disabled={sweetQTY >= maxProduct}
 									>
 										<Add />
 									</button>
@@ -177,10 +235,8 @@ export default React.memo(() => {
 								</div>
 								<div className="input">
 									<button
-										onClick={() =>
-											setSavouryQTY(savouryQTY - 1)
-										}
-										disabled={savouryQTY <= 0}
+										onClick={() => dec('sa')}
+										disabled={savouryQTY <= 0 || complete}
 									>
 										<Remove />
 									</button>
@@ -194,10 +250,10 @@ export default React.memo(() => {
 										}}
 									/>
 									<button
-										onClick={() =>
-											setSavouryQTY(savouryQTY - 1)
+										onClick={() => inc('sa')}
+										disabled={
+											savouryQTY >= maxProduct || complete
 										}
-										disabled={savouryQTY >= maxProduct}
 									>
 										<Add />
 									</button>
@@ -208,8 +264,8 @@ export default React.memo(() => {
 					<div className="checkout"></div>
 				</section>
 
-				<section className="payment">
-					<div className="card">
+				<section className={isMobile ? 'payment mobile' : 'payment'}>
+					<div className={isMobile ? 'card mobile' : 'card'}>
 						<div className={isMobile ? 'price mobile' : 'price'}>
 							<h1>
 								Total Cost:&nbsp;
@@ -219,23 +275,182 @@ export default React.memo(() => {
 						<div
 							className="paypal-buttons"
 							style={{
-								opacity: parseFloat(totalCost()) <= 0 ? 0.5 : 1,
+								opacity:
+									parseFloat(totalCost()) >= 0 || showResult
+										? 1
+										: 0.5,
 								pointerEvents:
-									parseFloat(totalCost()) <= 0
-										? 'none'
-										: 'all',
+									parseFloat(totalCost()) >= 0 || showResult
+										? 'all'
+										: 'none',
 								cursor:
-									parseFloat(totalCost()) <= 0
-										? 'not-allowed'
-										: '',
+									parseFloat(totalCost()) >= 0 || showResult
+										? 'initial'
+										: 'not-allowed',
 							}}
 						>
-							<PayPalButtons
-								style={{
-									layout: 'vertical',
-									label: 'checkout',
-								}}
-							/>
+							{checkout ? (
+								<PayPalButtons
+									style={{
+										layout: 'vertical',
+										label: 'checkout',
+									}}
+									disabled={!isResolved}
+									// forceReRender={[chocQTY, savouryQTY, sweetQTY]}
+									createOrder={(
+										_,
+										actions: CreateOrderActions
+									) => {
+										let total = totalCost();
+
+										let unit: PurchaseUnit = {
+											amount: {
+												currency_code: 'NZD',
+												breakdown: {
+													item_total: {
+														currency_code: 'NZD',
+														value: total,
+													},
+												},
+												value: total,
+											},
+											description: 'Order',
+											items: [],
+										};
+
+										if (chocQTY > 0) {
+											unit.items!.push({
+												name: 'NurtureNZ Chocolate Sweet Base Mix',
+												quantity: chocQTY.toString(),
+												unit_amount: {
+													currency_code: 'NZD',
+													value: '6.99',
+												},
+												sku: '',
+												category: 'PHYSICAL_GOODS',
+											});
+										}
+
+										if (sweetQTY > 0) {
+											unit.items!.push({
+												name: 'NurtureNZ Sweet Base Mix',
+												quantity: sweetQTY.toString(),
+												unit_amount: {
+													currency_code: 'NZD',
+													value: '6.99',
+												},
+												sku: '',
+												category: 'PHYSICAL_GOODS',
+											});
+										}
+
+										if (savouryQTY > 0) {
+											unit.items!.push({
+												name: 'NurtureNZ Savoury Base Mix',
+												quantity: savouryQTY.toString(),
+												unit_amount: {
+													currency_code: 'NZD',
+													value: '6.99',
+												},
+												sku: '',
+												category: 'PHYSICAL_GOODS',
+											});
+										}
+
+										// console.log(unit);
+
+										return actions.order.create({
+											intent: 'CAPTURE',
+											purchase_units: [unit],
+											application_context: {
+												shipping_preference:
+													'GET_FROM_FILE',
+											},
+										});
+									}}
+									onApprove={(
+										data: OnApproveOrderData,
+										actions: OnApproveOrderActions
+									) => {
+										return (
+											actions.order
+												//@ts-ignore
+												.capture()
+												//@ts-ignore
+												.then(() => {
+													setComplete(true);
+													setResult({
+														status: 'approved',
+														orderID: data.orderID,
+													});
+													setShowResult(true);
+													setCheckout(false);
+												})
+										);
+									}}
+									onCancel={(
+										_: OnCancelledOrderData,
+										__: OnCancelledOrderActions
+									) => {
+										setComplete(true);
+										setResult({ status: 'cancelled' });
+										setShowResult(true);
+										setCheckout(false);
+									}}
+									onError={() => {
+										setComplete(true);
+										setResult({ status: 'error' });
+										setShowResult(true);
+										setCheckout(false);
+									}}
+								/>
+							) : showResult ? (
+								<div className="results">
+									{result.status == 'approved' ? (
+										<>
+											<h1 className="approved">
+												Order Complete
+											</h1>
+											<span>
+												Order Number: {result.orderID}
+											</span>
+										</>
+									) : (
+										''
+									)}
+									{result.status == 'cancelled' ? (
+										<>
+											<h1 className="cancelled">
+												Order Cancelled
+											</h1>
+											<span>
+												if this is unexpected, please
+												refresh the page and try again.
+											</span>
+										</>
+									) : (
+										''
+									)}
+									{result.status == 'error' ? (
+										<>
+											<h1 className="error">Error</h1>
+											<span>An Error has Occured</span>
+										</>
+									) : (
+										''
+									)}
+								</div>
+							) : (
+								<div className="checkout-enable">
+									<Button
+										onClick={enableCheckout}
+										// color={'primary'}
+										className="checkout-button"
+									>
+										Checkout
+									</Button>
+								</div>
+							)}
 						</div>
 					</div>
 				</section>

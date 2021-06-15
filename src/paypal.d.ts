@@ -175,6 +175,8 @@ declare module '@paypal/react-paypal-js' {
 		onShippingChange?: () => void;
 	};
 
+	type usePaypalScriptReducer = {};
+
 	export class PayPalButtons extends PureComponent<PayPalButtonsProps, {}> {}
 
 	type PayPalScriptProviderProps = {
@@ -200,6 +202,7 @@ declare module '@paypal/react-paypal-js' {
 			'data-order-id'?: string;
 			'data-page-type'?: string;
 		};
+		deferLoading?: boolean;
 		children: ReactNode;
 	};
 
