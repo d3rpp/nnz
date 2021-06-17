@@ -415,17 +415,16 @@
 						align-items: center;
 
 						h1,
-						p,
-						em {
+						p {
 							width: 90%;
 							text-align: left;
 							overflow: visible;
 						}
 
-						em {
-							margin-top: 16px;
-							font-weight: bold;
-						}
+						// em {
+						// 	margin-top: 16px;
+						// 	font-weight: bold;
+						// }
 
 						h1 {
 							margin-bottom: 16px;
@@ -436,7 +435,7 @@
 						}
 
 						p.em {
-							margin: 8px auto;
+							margin: 0 auto;
 							width: 85%;
 							font-weight: bold;
 							font-style: italic;

@@ -1,3 +1,4 @@
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { isMobile } from 'mobile-device-detect';
 import React, { lazy, Suspense } from 'react';
 import {
@@ -28,35 +29,50 @@ const ShopPage = lazy(() => import('./pages/Shop/Shop').then((m) => m));
 export const App = () => {
 	return (
 		<div id="container" className={isMobile ? 'mobile' : 'desktop'}>
-			<Router>
-				<Header />
-				<main>
-					<Switch>
-						<Route path="/" exact>
-							<Suspense fallback={<Loading />}>
-								<IndexPage />
-								<Footer />
-							</Suspense>
-						</Route>
-						<Route path="/contact" exact>
-							<Suspense fallback={<Loading />}>
-								<ContactPage />
-								<Footer />
-							</Suspense>
-						</Route>
-						<Route path="/privacy" exact>
-							<Suspense fallback={<Loading />}>
-								<PrivacyPolicy />
-								<Footer />
-							</Suspense>
-						</Route>
-						<Route path="/recipes">
-							<Suspense fallback={<Loading />}>
-								<RecipesPage />
-								<Footer />
-							</Suspense>
-						</Route>
-						<Route path="/chocolate" exact>
+
+			<PayPalScriptProvider
+				options={{
+					'client-id':
+						'ATT7kGCaTEi5EGQ-Zk1hyxbkeNoKR8rm95fjcIpyNHoJ_sQ5-DCRd3unkZG9AXlYUX9Ci8dLIN3jIpbD',
+					currency: 'NZD',
+				}}
+			>
+				<Router>
+					<Header />
+					<main>
+						<Switch>
+							<Route path="/" exact>
+								<Suspense fallback={<Loading />}>
+									<IndexPage />
+									<Footer />
+								</Suspense>
+							</Route>
+							<Route path="/contact" exact>
+								<Suspense fallback={<Loading />}>
+									<ContactPage />
+									<Footer />
+								</Suspense>
+							</Route>
+							<Route path="/privacy" exact>
+								<Suspense fallback={<Loading />}>
+									<PrivacyPolicy />
+									<Footer />
+								</Suspense>
+							</Route>
+							<Route path="/recipes">
+								<Suspense fallback={<Loading />}>
+									<RecipesPage />
+									<Footer />
+								</Suspense>
+							</Route>
+							<Route path="/shop">
+								<Suspense fallback={<Loading />}>
+									<ShopPage />
+
+									<Footer />
+								</Suspense>
+							</Route>
+              	<Route path="/chocolate" exact>
 							<Redirect to="/recipes/chocolate" />
 						</Route>
 						<Route path="/sweet" exact>
@@ -65,15 +81,10 @@ export const App = () => {
 						<Route path="/savoury" exact>
 							<Redirect to="/recipes/savoury" />
 						</Route>
-						<Route path="/shop">
-							<Suspense fallback={<Loading />}>
-								<ShopPage />
-								<Footer />
-							</Suspense>
-						</Route>
-					</Switch>
-				</main>
-			</Router>
+						</Switch>
+					</main>
+				</Router>
+			</PayPalScriptProvider>
 		</div>
 	);
 };

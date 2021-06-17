@@ -15,14 +15,6 @@ function init() {
 	};
 
 	firebase.initializeApp(firebaseConfig);
-	// firebase.performance().dataCollectionEnabled = false;
-
-	// TODO: Do i add this?
-	// ! NO YOU SHOULD NOT
-	// * PLEASE DO NOT UNCOMMENT THIS LINE
-	// firebase
-	// 	.analytics()
-	// 	.logEvent('InitialPageLoad', { userAgent: navigator.userAgent });
 }
 
 type MIX = 'chocolate' | 'sweet' | 'savoury';

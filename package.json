@@ -3,7 +3,7 @@
 	"version": "2.0.0",
 	"license": "MIT",
 	"scripts": {
-		"start": "yarn clearCache; parcel serve ./public/index.html",
+		"start": "yarn clearCache; parcel serve ./public/index.html --https",
 		"build": "yarn clearCache; parcel build ./public/index.html",
 		"test": "jest --config ./jest.config.json",
 		"deploy:prod": "yarn build; firebase deploy --only hosting",
@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@material-ui/core": "^4.11.4",
 		"@material-ui/icons": "^4.11.2",
+		"@paypal/react-paypal-js": "^7.0.0",
 		"firebase": "^8.6.2",
 		"mobile-device-detect": "^0.4.3",
 		"normalize.css": "^8.0.1",
