@@ -77,7 +77,7 @@
 
 		&.mobile {
 			margin-top: 0;
-			height: calc(100vh - 64px);
+			height: calc(50vh - 64px);
 		}
 
 		overflow: hidden;
@@ -187,13 +187,16 @@
 
 			&.mobile {
 				width: 100%;
-				height: calc(100vh - 64px);
+				height: 100%;
 
 				.details {
 					flex-direction: column;
 
+					overflow: hidden;
+
 					span {
 						margin: 16px;
+						overflow: visible;
 					}
 				}
 			}
@@ -202,6 +205,8 @@
 				@include fadeUp(50ms);
 
 				transition: background-color 500ms $easing;
+
+				overflow: visible;
 
 				margin: 32px 0;
 			}
@@ -218,6 +223,10 @@
 				flex-direction: column;
 			}
 
+			p {
+				overflow-y: visible;
+			}
+
 			span {
 				width: 200px;
 
@@ -225,6 +234,8 @@
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
+
+				overflow: visible;
 
 				@include fadeUp(200ms);
 
@@ -304,6 +315,7 @@
 				display: flex;
 				justify-content: flex-start;
 				align-items: center;
+				overflow: hidden;
 
 				h1 {
 					margin: 0;
@@ -316,6 +328,7 @@
 
 			h2.optional {
 				margin: 16px 0;
+				overflow: hidden;
 			}
 
 			.MuiList-root .item {
@@ -359,12 +372,13 @@
 							justify-content: center;
 							align-items: center;
 
+							// width: 90vw;
+
 							h1,
-							p,
-							em {
-								width: 75vw;
+							p {
+								// width: 75%;
 								margin: 0 auto;
-								overflow: visible;
+								// overflow: hidden;
 							}
 
 							h1 {
@@ -375,12 +389,14 @@
 
 							p.desc {
 								margin-left: 0;
+								width: 75vw;
 							}
 
 							p.em {
 								margin-left: 4px;
 								margin-top: 8px;
-								width: 80vw;
+								// margin: 8px auto;
+								width: 70vw;
 								font-style: italic;
 								font-weight: bold;
 								// text-align: center;

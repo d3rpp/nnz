@@ -1,7 +1,12 @@
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
 import { isMobile } from 'mobile-device-detect';
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 import Footer from '../components/Footer/Footer';
 import { Header } from '../components/Header/Header';
 import Loading from '../components/Loading/Loading';
@@ -24,6 +29,7 @@ const ShopPage = lazy(() => import('./pages/Shop/Shop').then((m) => m));
 export const App = () => {
 	return (
 		<div id="container" className={isMobile ? 'mobile' : 'desktop'}>
+
 			<PayPalScriptProvider
 				options={{
 					'client-id':
@@ -66,6 +72,15 @@ export const App = () => {
 									<Footer />
 								</Suspense>
 							</Route>
+              	<Route path="/chocolate" exact>
+							<Redirect to="/recipes/chocolate" />
+						</Route>
+						<Route path="/sweet" exact>
+							<Redirect to="/recipes/sweet" />
+						</Route>
+						<Route path="/savoury" exact>
+							<Redirect to="/recipes/savoury" />
+						</Route>
 						</Switch>
 					</main>
 				</Router>

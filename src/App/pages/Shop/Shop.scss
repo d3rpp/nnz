@@ -21,7 +21,7 @@
 
 		&.mobile {
 			margin-top: 0;
-			height: calc(100vh - 64px);
+			height: calc(50vh - 64px);
 			background-attachment: scroll;
 		}
 
@@ -58,6 +58,7 @@
 		// @media screen and (min-width: 599px) {
 		// 	height: calc(100vh - 464px);
 		// }
+
 
 		// &.mobile {
 		// min-height: calc(100vh - 32px);
@@ -211,7 +212,12 @@
 			}
 
 			min-height: 256px;
+
+		&.mobile {
+			height: calc(50vh - 64px);
+
 		}
+    }
 
 		padding: 16px;
 
