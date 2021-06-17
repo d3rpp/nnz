@@ -113,6 +113,7 @@ export default React.memo(() => {
 				'client-id':
 					'ATT7kGCaTEi5EGQ-Zk1hyxbkeNoKR8rm95fjcIpyNHoJ_sQ5-DCRd3unkZG9AXlYUX9Ci8dLIN3jIpbD',
 				currency: 'NZD',
+				'buyer-country': 'NZ',
 			}}
 		>
 			<div id="shop">
@@ -152,7 +153,9 @@ export default React.memo(() => {
 								<div className="input">
 									<button
 										onClick={() => dec('ch')}
-										disabled={chocQTY <= 0 || complete}
+										disabled={
+											chocQTY <= 0 || complete || checkout
+										}
 									>
 										<Remove />
 									</button>
@@ -168,7 +171,9 @@ export default React.memo(() => {
 									<button
 										onClick={() => inc('ch')}
 										disabled={
-											chocQTY >= maxProduct || complete
+											chocQTY >= maxProduct ||
+											complete ||
+											checkout
 										}
 									>
 										<Add />
@@ -194,7 +199,11 @@ export default React.memo(() => {
 								<div className="input">
 									<button
 										onClick={() => dec('sw')}
-										disabled={sweetQTY <= 0 || complete}
+										disabled={
+											sweetQTY <= 0 ||
+											complete ||
+											checkout
+										}
 									>
 										<Remove />
 									</button>
@@ -210,7 +219,9 @@ export default React.memo(() => {
 									<button
 										onClick={() => inc('sw')}
 										disabled={
-											sweetQTY >= maxProduct || complete
+											sweetQTY >= maxProduct ||
+											complete ||
+											checkout
 										}
 									>
 										<Add />
@@ -236,7 +247,11 @@ export default React.memo(() => {
 								<div className="input">
 									<button
 										onClick={() => dec('sa')}
-										disabled={savouryQTY <= 0 || complete}
+										disabled={
+											savouryQTY <= 0 ||
+											complete ||
+											checkout
+										}
 									>
 										<Remove />
 									</button>
@@ -252,7 +267,9 @@ export default React.memo(() => {
 									<button
 										onClick={() => inc('sa')}
 										disabled={
-											savouryQTY >= maxProduct || complete
+											savouryQTY >= maxProduct ||
+											complete ||
+											checkout
 										}
 									>
 										<Add />
@@ -377,11 +394,13 @@ export default React.memo(() => {
 												//@ts-ignore
 												.capture()
 												//@ts-ignore
-												.then(() => {
+												.then((d: any) => {
+													console.log(d);
+
 													setComplete(true);
 													setResult({
 														status: 'approved',
-														orderID: data.orderID,
+														orderID: d.id,
 													});
 													setShowResult(true);
 													setCheckout(false);
@@ -443,9 +462,14 @@ export default React.memo(() => {
 							) : (
 								<div className="checkout-enable">
 									<Button
+										disabled={parseFloat(totalCost()) <= 0}
 										onClick={enableCheckout}
 										// color={'primary'}
-										className="checkout-button"
+										className={
+											parseFloat(totalCost()) <= 0
+												? 'checkout-button disabled'
+												: 'checkout-button'
+										}
 									>
 										Checkout
 									</Button>

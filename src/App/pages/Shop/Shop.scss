@@ -92,6 +92,10 @@
 					color: #eee;
 
 					margin: 0 auto;
+
+					&.disabled {
+						opacity: 0.75;
+					}
 				}
 			}
 
@@ -329,7 +333,7 @@
 						border: none;
 						background-color: transparent;
 
-						&:hover {
+						&:hover:not([disabled]) {
 							background-color: #22222211;
 						}
 
@@ -341,6 +345,8 @@
 					input {
 						text-align: center;
 						border: none;
+						// font-size: 18px;
+						// font-weight: bold;
 					}
 				}
 			}
