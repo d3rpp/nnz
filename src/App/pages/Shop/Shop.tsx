@@ -251,7 +251,6 @@ export default React.memo(() => {
 						</div>
 					</div>
 				</div>
-				<div className="checkout"></div>
 			</section>
 
 			<section className={isMobile ? 'payment mobile' : 'payment'}>
