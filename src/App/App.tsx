@@ -24,11 +24,13 @@ const ShopPage = lazy(() => import('./pages/Shop/Shop').then((m) => m));
 export const App = () => {
 	return (
 		<div id="container" className={isMobile ? 'mobile' : 'desktop'}>
-			<PayPalScriptProvider options={{
-				"client-id":"sb",
-				currency:"NZD",
-				intent:""
-			}}>
+			<PayPalScriptProvider
+				options={{
+					'client-id':
+						'ATT7kGCaTEi5EGQ-Zk1hyxbkeNoKR8rm95fjcIpyNHoJ_sQ5-DCRd3unkZG9AXlYUX9Ci8dLIN3jIpbD',
+					currency: 'NZD',
+				}}
+			>
 				<Router>
 					<Header />
 					<main>
@@ -60,6 +62,7 @@ export const App = () => {
 							<Route path="/shop">
 								<Suspense fallback={<Loading />}>
 									<ShopPage />
+
 									<Footer />
 								</Suspense>
 							</Route>

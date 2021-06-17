@@ -32,7 +32,7 @@ type orderStatus =
 	| { status: 'progress' }
 	| { status: 'cancelled' }
 	| { status: 'error' }
-	| { status: 'approved'; orderID: string };
+	| { status: 'approved' };
 
 export default React.memo(() => {
 	// let choc = 0;
@@ -108,377 +108,346 @@ export default React.memo(() => {
 	const maxProduct = 10;
 
 	return (
-		<PayPalScriptProvider
-			options={{
-				'client-id':
-					'ATT7kGCaTEi5EGQ-Zk1hyxbkeNoKR8rm95fjcIpyNHoJ_sQ5-DCRd3unkZG9AXlYUX9Ci8dLIN3jIpbD',
-				currency: 'NZD',
-				'buyer-country': 'NZ',
-			}}
-		>
-			<div id="shop">
+		<div id="shop">
+			<div
+				className={isMobile ? 'header mobile' : 'header'}
+				role="header"
+			>
 				<div
-					className={isMobile ? 'header mobile' : 'header'}
-					role="header"
+					className={
+						isMobile ? 'header-wrapper mobile' : 'header-wrapper'
+					}
 				>
-					<div
-						className={
-							isMobile
-								? 'header-wrapper mobile'
-								: 'header-wrapper'
-						}
-					>
-						<h1>Shop</h1>
-					</div>
+					<h1>Shop</h1>
 				</div>
+			</div>
 
-				<section className={isMobile ? 'main mobile' : 'main'}>
-					<div className={isMobile ? 'items mobile' : 'items'}>
-						<span className="filler"></span>
-						<div className="chocolate card">
-							<div className="image">
-								<div className="media">
-									<LazyImage
-										src={LogoBlack}
-										colour="#222222bb"
-									/>
-								</div>
-								<div className="text chocolate">
-									<span>
-										Chocolate
-										<br />
-										Base&nbsp;Mix
-									</span>
-								</div>
-								<div className="input">
-									<button
-										onClick={() => dec('ch')}
-										disabled={
-											chocQTY <= 0 || complete || checkout
-										}
-									>
-										<Remove />
-									</button>
-									<input
-										type="number"
-										value={chocQTY}
-										onChange={(ev) => {
-											setChocQTY(
-												parseInt(ev.target.value)
-											);
-										}}
-									/>
-									<button
-										onClick={() => inc('ch')}
-										disabled={
-											chocQTY >= maxProduct ||
-											complete ||
-											checkout
-										}
-									>
-										<Add />
-									</button>
-								</div>
+			<section className={isMobile ? 'main mobile' : 'main'}>
+				<div className={isMobile ? 'items mobile' : 'items'}>
+					<span className="filler"></span>
+					<div className="chocolate card">
+						<div className="image">
+							<div className="media">
+								<LazyImage src={LogoBlack} colour="#222222bb" />
 							</div>
-						</div>
-						<div className="sweet card">
-							<div className="image">
-								<div className="media">
-									<LazyImage
-										src={LogoBlack}
-										colour="#222222bb"
-									/>
-								</div>
-								<div className="text sweet">
-									<span>
-										Sweet
-										<br />
-										Base&nbsp;Mix
-									</span>
-								</div>
-								<div className="input">
-									<button
-										onClick={() => dec('sw')}
-										disabled={
-											sweetQTY <= 0 ||
-											complete ||
-											checkout
-										}
-									>
-										<Remove />
-									</button>
-									<input
-										type="number"
-										value={sweetQTY}
-										onChange={(ev) => {
-											setSweetQTY(
-												parseInt(ev.target.value)
-											);
-										}}
-									/>
-									<button
-										onClick={() => inc('sw')}
-										disabled={
-											sweetQTY >= maxProduct ||
-											complete ||
-											checkout
-										}
-									>
-										<Add />
-									</button>
-								</div>
+							<div className="text chocolate">
+								<span>
+									Chocolate
+									<br />
+									Base&nbsp;Mix
+								</span>
 							</div>
-						</div>
-						<div className="savoury card">
-							<div className="image">
-								<div className="media">
-									<LazyImage
-										src={LogoBlack}
-										colour="#222222bb"
-									/>
-								</div>
-								<div className="text savoury">
-									<span>
-										Savoury
-										<br />
-										Base&nbsp;Mix
-									</span>
-								</div>
-								<div className="input">
-									<button
-										onClick={() => dec('sa')}
-										disabled={
-											savouryQTY <= 0 ||
-											complete ||
-											checkout
-										}
-									>
-										<Remove />
-									</button>
-									<input
-										type="number"
-										value={savouryQTY}
-										onChange={(ev) => {
-											setSavouryQTY(
-												parseInt(ev.target.value)
-											);
-										}}
-									/>
-									<button
-										onClick={() => inc('sa')}
-										disabled={
-											savouryQTY >= maxProduct ||
-											complete ||
-											checkout
-										}
-									>
-										<Add />
-									</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div className="checkout"></div>
-				</section>
-
-				<section className={isMobile ? 'payment mobile' : 'payment'}>
-					<div className={isMobile ? 'card mobile' : 'card'}>
-						<div className={isMobile ? 'price mobile' : 'price'}>
-							<h1>
-								Total Cost:&nbsp;
-								<span className="total">${totalCost()}</span>
-							</h1>
-						</div>
-						<div
-							className="paypal-buttons"
-							style={{
-								opacity:
-									parseFloat(totalCost()) >= 0 || showResult
-										? 1
-										: 0.5,
-								pointerEvents:
-									parseFloat(totalCost()) >= 0 || showResult
-										? 'all'
-										: 'none',
-								cursor:
-									parseFloat(totalCost()) >= 0 || showResult
-										? 'initial'
-										: 'not-allowed',
-							}}
-						>
-							{checkout ? (
-								<PayPalButtons
-									style={{
-										layout: 'vertical',
-										label: 'checkout',
-									}}
-									disabled={!isResolved}
-									// forceReRender={[chocQTY, savouryQTY, sweetQTY]}
-									createOrder={(
-										_,
-										actions: CreateOrderActions
-									) => {
-										let total = totalCost();
-
-										let unit: PurchaseUnit = {
-											amount: {
-												currency_code: 'NZD',
-												breakdown: {
-													item_total: {
-														currency_code: 'NZD',
-														value: total,
-													},
-												},
-												value: total,
-											},
-											description: 'Order',
-											items: [],
-										};
-
-										if (chocQTY > 0) {
-											unit.items!.push({
-												name: 'NurtureNZ Chocolate Sweet Base Mix',
-												quantity: chocQTY.toString(),
-												unit_amount: {
-													currency_code: 'NZD',
-													value: '6.99',
-												},
-												sku: '',
-												category: 'PHYSICAL_GOODS',
-											});
-										}
-
-										if (sweetQTY > 0) {
-											unit.items!.push({
-												name: 'NurtureNZ Sweet Base Mix',
-												quantity: sweetQTY.toString(),
-												unit_amount: {
-													currency_code: 'NZD',
-													value: '6.99',
-												},
-												sku: '',
-												category: 'PHYSICAL_GOODS',
-											});
-										}
-
-										if (savouryQTY > 0) {
-											unit.items!.push({
-												name: 'NurtureNZ Savoury Base Mix',
-												quantity: savouryQTY.toString(),
-												unit_amount: {
-													currency_code: 'NZD',
-													value: '6.99',
-												},
-												sku: '',
-												category: 'PHYSICAL_GOODS',
-											});
-										}
-
-										// console.log(unit);
-
-										return actions.order.create({
-											intent: 'CAPTURE',
-											purchase_units: [unit],
-											application_context: {
-												shipping_preference:
-													'GET_FROM_FILE',
-											},
-										});
-									}}
-									onApprove={(
-										data: OnApproveOrderData,
-										actions: OnApproveOrderActions
-									) => {
-										return (
-											actions.order
-												//@ts-ignore
-												.capture()
-												//@ts-ignore
-												.then((d: any) => {
-													console.log(d);
-
-													setComplete(true);
-													setResult({
-														status: 'approved',
-														orderID: d.id,
-													});
-													setShowResult(true);
-													setCheckout(false);
-												})
-										);
-									}}
-									onCancel={(
-										_: OnCancelledOrderData,
-										__: OnCancelledOrderActions
-									) => {
-										setComplete(true);
-										setResult({ status: 'cancelled' });
-										setShowResult(true);
-										setCheckout(false);
-									}}
-									onError={() => {
-										setComplete(true);
-										setResult({ status: 'error' });
-										setShowResult(true);
-										setCheckout(false);
+							<div className="input">
+								<button
+									onClick={() => dec('ch')}
+									disabled={
+										chocQTY <= 0 || complete || checkout
+									}
+								>
+									<Remove />
+								</button>
+								<input
+									type="number"
+									value={chocQTY}
+									onChange={(ev) => {
+										setChocQTY(parseInt(ev.target.value));
 									}}
 								/>
-							) : showResult ? (
-								<div className="results">
-									{result.status == 'approved' ? (
-										<>
-											<h1 className="approved">
-												Order Complete
-											</h1>
-											<span>
-												Order Number: {result.orderID}
-											</span>
-										</>
-									) : (
-										''
-									)}
-									{result.status == 'cancelled' ? (
-										<>
-											<h1 className="cancelled">
-												Order Cancelled
-											</h1>
-											<span>
-												if this is unexpected, please
-												refresh the page and try again.
-											</span>
-										</>
-									) : (
-										''
-									)}
-									{result.status == 'error' ? (
-										<>
-											<h1 className="error">Error</h1>
-											<span>An Error has Occured</span>
-										</>
-									) : (
-										''
-									)}
-								</div>
-							) : (
-								<div className="checkout-enable">
-									<Button
-										disabled={parseFloat(totalCost()) <= 0}
-										onClick={enableCheckout}
-										// color={'primary'}
-										className={
-											parseFloat(totalCost()) <= 0
-												? 'checkout-button disabled'
-												: 'checkout-button'
-										}
-									>
-										Checkout
-									</Button>
-								</div>
-							)}
+								<button
+									onClick={() => inc('ch')}
+									disabled={
+										chocQTY >= maxProduct ||
+										complete ||
+										checkout
+									}
+								>
+									<Add />
+								</button>
+							</div>
 						</div>
 					</div>
-				</section>
-			</div>
-		</PayPalScriptProvider>
+					<div className="sweet card">
+						<div className="image">
+							<div className="media">
+								<LazyImage src={LogoBlack} colour="#222222bb" />
+							</div>
+							<div className="text sweet">
+								<span>
+									Sweet
+									<br />
+									Base&nbsp;Mix
+								</span>
+							</div>
+							<div className="input">
+								<button
+									onClick={() => dec('sw')}
+									disabled={
+										sweetQTY <= 0 || complete || checkout
+									}
+								>
+									<Remove />
+								</button>
+								<input
+									type="number"
+									value={sweetQTY}
+									onChange={(ev) => {
+										setSweetQTY(parseInt(ev.target.value));
+									}}
+								/>
+								<button
+									onClick={() => inc('sw')}
+									disabled={
+										sweetQTY >= maxProduct ||
+										complete ||
+										checkout
+									}
+								>
+									<Add />
+								</button>
+							</div>
+						</div>
+					</div>
+					<div className="savoury card">
+						<div className="image">
+							<div className="media">
+								<LazyImage src={LogoBlack} colour="#222222bb" />
+							</div>
+							<div className="text savoury">
+								<span>
+									Savoury
+									<br />
+									Base&nbsp;Mix
+								</span>
+							</div>
+							<div className="input">
+								<button
+									onClick={() => dec('sa')}
+									disabled={
+										savouryQTY <= 0 || complete || checkout
+									}
+								>
+									<Remove />
+								</button>
+								<input
+									type="number"
+									value={savouryQTY}
+									onChange={(ev) => {
+										setSavouryQTY(
+											parseInt(ev.target.value)
+										);
+									}}
+								/>
+								<button
+									onClick={() => inc('sa')}
+									disabled={
+										savouryQTY >= maxProduct ||
+										complete ||
+										checkout
+									}
+								>
+									<Add />
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="checkout"></div>
+			</section>
+
+			<section className={isMobile ? 'payment mobile' : 'payment'}>
+				<div className={isMobile ? 'card mobile' : 'card'}>
+					<div className={isMobile ? 'price mobile' : 'price'}>
+						<h1>
+							Total Cost:&nbsp;
+							<span className="total">${totalCost()}</span>
+						</h1>
+					</div>
+					<div
+						className="paypal-buttons"
+						style={{
+							opacity:
+								parseFloat(totalCost()) >= 0 || showResult
+									? 1
+									: 0.5,
+							pointerEvents:
+								parseFloat(totalCost()) >= 0 || showResult
+									? 'all'
+									: 'none',
+							cursor:
+								parseFloat(totalCost()) >= 0 || showResult
+									? 'initial'
+									: 'not-allowed',
+						}}
+					>
+						{checkout ? (
+							<PayPalButtons
+								style={{
+									layout: 'vertical',
+									label: 'checkout',
+								}}
+								disabled={!isResolved}
+								// forceReRender={[chocQTY, savouryQTY, sweetQTY]}
+								createOrder={(
+									_,
+									actions: CreateOrderActions
+								) => {
+									let total = totalCost();
+
+									let unit: PurchaseUnit = {
+										amount: {
+											currency_code: 'NZD',
+											breakdown: {
+												item_total: {
+													currency_code: 'NZD',
+													value: total,
+												},
+											},
+											value: total,
+										},
+										description: 'Order',
+										items: [],
+									};
+
+									if (chocQTY > 0) {
+										unit.items!.push({
+											name: 'NurtureNZ Chocolate Sweet Base Mix',
+											quantity: chocQTY.toString(),
+											unit_amount: {
+												currency_code: 'NZD',
+												value: '6.99',
+											},
+											sku: '',
+											category: 'PHYSICAL_GOODS',
+										});
+									}
+
+									if (sweetQTY > 0) {
+										unit.items!.push({
+											name: 'NurtureNZ Sweet Base Mix',
+											quantity: sweetQTY.toString(),
+											unit_amount: {
+												currency_code: 'NZD',
+												value: '6.99',
+											},
+											sku: '',
+											category: 'PHYSICAL_GOODS',
+										});
+									}
+
+									if (savouryQTY > 0) {
+										unit.items!.push({
+											name: 'NurtureNZ Savoury Base Mix',
+											quantity: savouryQTY.toString(),
+											unit_amount: {
+												currency_code: 'NZD',
+												value: '6.99',
+											},
+											sku: '',
+											category: 'PHYSICAL_GOODS',
+										});
+									}
+
+									// console.log(unit);
+
+									return actions.order.create({
+										intent: 'CAPTURE',
+										purchase_units: [unit],
+										application_context: {
+											shipping_preference:
+												'GET_FROM_FILE',
+										},
+									});
+								}}
+								onApprove={(
+									data: OnApproveOrderData,
+									actions: OnApproveOrderActions
+								) => {
+									return (
+										actions.order
+											//@ts-ignore
+											.capture()
+											//@ts-ignore
+											.then((d: any) => {
+												console.log(d);
+
+												setComplete(true);
+												setResult({
+													status: 'approved',
+												});
+												setShowResult(true);
+												setCheckout(false);
+											})
+									);
+								}}
+								onCancel={(
+									_: OnCancelledOrderData,
+									__: OnCancelledOrderActions
+								) => {
+									setComplete(true);
+									setResult({ status: 'cancelled' });
+									setShowResult(true);
+									setCheckout(false);
+								}}
+								onError={() => {
+									setComplete(true);
+									setResult({ status: 'error' });
+									setShowResult(true);
+									setCheckout(false);
+								}}
+							/>
+						) : showResult ? (
+							<div className="results">
+								{result.status == 'approved' ? (
+									<>
+										<h1 className="approved">
+											Order Complete
+										</h1>
+										<span>You should expect</span>
+									</>
+								) : (
+									''
+								)}
+								{result.status == 'cancelled' ? (
+									<>
+										<h1 className="cancelled">
+											Order Cancelled
+										</h1>
+										<span>
+											if this is unexpected, please
+											refresh the page and try again.
+										</span>
+									</>
+								) : (
+									''
+								)}
+								{result.status == 'error' ? (
+									<>
+										<h1 className="error">Error</h1>
+										<span>An Error has Occured</span>
+									</>
+								) : (
+									''
+								)}
+							</div>
+						) : (
+							<div className="checkout-enable">
+								<Button
+									disabled={parseFloat(totalCost()) <= 0}
+									onClick={enableCheckout}
+									// color={'primary'}
+									className={
+										parseFloat(totalCost()) <= 0
+											? 'checkout-button disabled'
+											: 'checkout-button'
+									}
+								>
+									Checkout
+								</Button>
+							</div>
+						)}
+					</div>
+				</div>
+			</section>
+		</div>
 	);
 });

@@ -147,12 +147,16 @@
 						.total {
 							font-weight: bold;
 						}
+
+						overflow: hidden;
 					}
 
 					span {
 						margin: 4px 0;
 						padding: 8px 0;
 						color: #111;
+
+						overflow: hidden;
 
 						&:not(.total) {
 							display: flex;
