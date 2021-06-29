@@ -27,7 +27,9 @@ const DesktopHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 			<Link to="/" className="logo">
 				<img src={img} alt="The NurtureNZ Logo" height="80%" />
 			</Link>
-			<Link to="/shop">Shop</Link>
+			<a href="https://nurture-new-zealand.mystorbie.com" target="_blank">
+				Shop
+			</a>
 			<Link to="/contact">Contact</Link>
 		</header>
 	);
@@ -74,10 +76,14 @@ const MobileHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 					</Link>
 				</MenuItem>
 				<MenuItem>
-					<Link to="/shop" onClick={handleClose}>
+					<a
+						href="https://nurture-new-zealand.mystorbie.com"
+						target="_blank"
+						onClick={handleClose}
+					>
 						<StoreIcon />
 						Shop
-					</Link>
+					</a>
 				</MenuItem>
 				<MenuItem>
 					<Link to="/contact" onClick={handleClose}>

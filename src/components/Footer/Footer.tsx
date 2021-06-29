@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { YESLogo } from '../../assets';
 import './Footer.scss';
 
 export default () => {
@@ -17,6 +18,17 @@ export default () => {
 				</a>{' '}
 				Business
 			</span>
+
+			<div
+				style={{
+					position: 'absolute',
+					bottom: '8px',
+					right: '8px',
+					height: '48px',
+				}}
+			>
+				<img src={YESLogo} alt="YES Logo" style={{ height: '48px' }} />
+			</div>
 		</footer>
 	);
 };

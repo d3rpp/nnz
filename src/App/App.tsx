@@ -24,12 +24,9 @@ const RecipesPage = lazy(() =>
 	import('./pages/Recipes/Recipes').then((m) => m)
 );
 
-const ShopPage = lazy(() => import('./pages/Shop/Shop').then((m) => m));
-
 export const App = () => {
 	return (
 		<div id="container" className={isMobile ? 'mobile' : 'desktop'}>
-
 			<PayPalScriptProvider
 				options={{
 					'client-id':
@@ -65,22 +62,18 @@ export const App = () => {
 									<Footer />
 								</Suspense>
 							</Route>
-							<Route path="/shop">
-								<Suspense fallback={<Loading />}>
-									<ShopPage />
-
-									<Footer />
-								</Suspense>
+							<Route path="/chocolate" exact>
+								<Redirect to="/recipes/chocolate" />
 							</Route>
-              	<Route path="/chocolate" exact>
-							<Redirect to="/recipes/chocolate" />
-						</Route>
-						<Route path="/sweet" exact>
-							<Redirect to="/recipes/sweet" />
-						</Route>
-						<Route path="/savoury" exact>
-							<Redirect to="/recipes/savoury" />
-						</Route>
+							<Route path="/sweet" exact>
+								<Redirect to="/recipes/sweet" />
+							</Route>
+							<Route path="/savoury" exact>
+								<Redirect to="/recipes/savoury" />
+							</Route>
+							<Route path="/*">
+								<Redirect to="/" />
+							</Route>
 						</Switch>
 					</main>
 				</Router>

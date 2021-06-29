@@ -10,6 +10,8 @@ import LogoBlack from './NurtureNZ.png';
 import IconLogoWhite from './NW.png';
 //@ts-ignore
 import LogoWhite from './NurtureNZW.png';
+// @ts-ignore
+import YESLogo from './YES.png';
 
 export {
 	Landing,
@@ -18,4 +20,5 @@ export {
 	LogoBlack,
 	IconLogoWhite,
 	LogoWhite,
+	YESLogo,
 };
