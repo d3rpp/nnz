@@ -2,6 +2,7 @@ import firebase from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/firestore';
 import 'firebase/storage';
+import 'firebase/app-check';
 
 function init() {
 	const firebaseConfig = {
@@ -15,6 +16,8 @@ function init() {
 	};
 
 	firebase.initializeApp(firebaseConfig);
+
+	firebase.appCheck().activate('6Le1umwbAAAAANIuyH3aH3-ZOTkar4iJjAB6iYeE');
 }
 
 type MIX = 'chocolate' | 'sweet' | 'savoury';
