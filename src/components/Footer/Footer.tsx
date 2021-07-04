@@ -25,6 +25,7 @@ export default () => {
 					bottom: '8px',
 					right: '8px',
 					height: '48px',
+					overflow: 'hidden',
 				}}
 			>
 				<img src={YESLogo} alt="YES Logo" style={{ height: '48px' }} />
