@@ -26,6 +26,9 @@
 		],
 		"*.webmanifest": [
 			"@parcel/transformer-webmanifest"
+		],
+		"*.jsonld": [
+			"@parcel/transformer-jsonld"
 		]
 	},
 	"namers": [
@@ -61,7 +64,8 @@
 		"*.html": "@parcel/packager-html",
 		"*.css": "@parcel/packager-css",
 		"*.js": "@parcel/packager-js",
-		"*.{jpg,jpeg,png,webm,ico,webmanifest,webp}": "@parcel/packager-raw"
+		"*.{jpg,jpeg,png,webm,ico,webmanifest,webp}": "@parcel/packager-raw",
+		"*": "@parcel/packager-raw"
 	},
 	"resolvers": [
 		"@parcel/resolver-default"

@@ -27,7 +27,11 @@ const DesktopHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 			<Link to="/" className="logo">
 				<img src={img} alt="The NurtureNZ Logo" height="80%" />
 			</Link>
-			<a href="https://nurture-new-zealand.mystorbie.com" target="_blank">
+			<a
+				href="https://nurture-new-zealand.mystorbie.com"
+				target="_blank"
+				rel="noreferrer"
+			>
 				Shop
 			</a>
 			<Link to="/contact">Contact</Link>
@@ -79,6 +83,7 @@ const MobileHeader: React.FC<HeaderProps> = ({ colour }: HeaderProps) => {
 					<a
 						href="https://nurture-new-zealand.mystorbie.com"
 						target="_blank"
+						rel="noreferrer"
 						onClick={handleClose}
 					>
 						<StoreIcon />

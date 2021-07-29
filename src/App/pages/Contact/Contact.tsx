@@ -122,16 +122,6 @@ export default React.memo(() => {
 						</a>
 					</div>
 					<div className="section">
-						<Pinterest />
-						<a
-							// href="https://pintrest.com"
-							target="_blank"
-							onClick={() => recordUsageOfSocialMedia('pintrest')}
-						>
-							Coming Soon!
-						</a>
-					</div>
-					<div className="section">
 						{/* Adding this icon brings me PAIN */}
 						<svg
 							height="512pt"

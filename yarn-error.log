@@ -1,31 +1,35 @@
 Arguments: 
-  /Users/hudsoncurren/.nvm/versions/node/v12.22.1/bin/node /usr/local/Cellar/yarn/1.22.10/libexec/bin/yarn.js build
+  /usr/local/bin/node /usr/local/bin/yarn add --json @parcel/packager-jsonld -D
 
 PATH: 
-  /Users/hudsoncurren/.nvm/versions/node/v12.22.1/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/Users/hudsoncurren/.nvm/versions/node/v12.22.1/bin:/Library/Frameworks/Python.framework/Versions/3.8/bin:/opt/local/bin:/opt/local/sbin:/Users/hudsoncurren/.cargo/bin
+  /var/folders/76/k3m1yk3s1md52xg54gj6csm40000gp/T/yarn--1626836552320-0.7660469255182039:/Users/hudsoncurren/dev/nnz/node_modules/.bin:/Users/hudsoncurren/.config/yarn/link/node_modules/.bin:/usr/local/libexec/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/lib/node_modules/npm/bin/node-gyp-bin:/usr/local/bin/node_modules/npm/bin/node-gyp-bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Apple/usr/bin:/usr/local/sbin:/Users/hudsoncurren/.cargo/bin
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  12.22.1
+  14.17.3
 
 Platform: 
   darwin x64
 
 Trace: 
-  SyntaxError: /Users/hudsoncurren/dev/nnz/package.json: Unexpected token / in JSON at position 51
-      at JSON.parse (<anonymous>)
-      at /usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:310:30)
-      at /usr/local/Cellar/yarn/1.22.10/libexec/lib/cli.js:321:13
+  Error: https://registry.yarnpkg.com/@parcel%2fpackager-jsonld: Not found
+      at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66988:18)
+      at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140662:22)
+      at Request.emit (events.js:375:28)
+      at Request.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141634:10)
+      at Request.emit (events.js:375:28)
+      at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/yarn/lib/cli.js:141556:12)
+      at Object.onceWrapper (events.js:481:28)
+      at IncomingMessage.emit (events.js:387:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
 
 npm manifest: 
   {
   	"name": "nrtrnz-recipes",
-  	"version": "1.0.0",
-  	// "main": "./dist/index.html",
+  	"version": "2.0.0",
   	"license": "MIT",
   	"scripts": {
   		"start": "yarn clearCache; parcel serve ./public/index.html",
@@ -39,6 +43,7 @@ npm manifest:
   		"@material-ui/icons": "^4.11.2",
   		"firebase": "^8.6.2",
   		"mobile-device-detect": "^0.4.3",
+  		"normalize.css": "^8.0.1",
   		"react": "^17.0.2",
   		"react-dom": "^17.0.2",
   		"react-progressive-graceful-image": "^0.6.13",
@@ -52,6 +57,7 @@ npm manifest:
   		"@babel/preset-react": "^7.13.13",
   		"@babel/preset-typescript": "^7.13.0",
   		"@parcel/packager-ts": "^2.0.0-alpha.3",
+  		"@parcel/transformer-jsonld": "^2.0.0-nightly.1849",
   		"@parcel/transformer-sass": "2.0.0-beta.2",
   		"@parcel/transformer-typescript-tsc": "^2.0.0-alpha.3",
   		"@parcel/transformer-webmanifest": "^2.0.0-nightly.2186",
@@ -1759,6 +1765,13 @@ Lockfile:
     dependencies:
       "@parcel/types" "2.0.0-beta.2"
   
+  "@parcel/plugin@2.0.0-nightly.227+a98be591":
+    version "2.0.0-nightly.227"
+    resolved "https://registry.yarnpkg.com/@parcel/plugin/-/plugin-2.0.0-nightly.227.tgz#df2643e9b3e44c1cfd0559897ab4f9dffac59654"
+    integrity sha512-Mvi07Y6HUOl/fhrfZxfeDZI3903pHbGK91HBgEArql4WpqxsW+z4AfaM8sE5KuZYgI+I5y3l6X/nvZNL2YZ+OQ==
+    dependencies:
+      "@parcel/types" "2.0.0-nightly.227+a98be591"
+  
   "@parcel/plugin@2.0.0-nightly.564+fbca3a93":
     version "2.0.0-nightly.564"
     resolved "https://registry.yarnpkg.com/@parcel/plugin/-/plugin-2.0.0-nightly.564.tgz#2a5ca5092c6a7054d3daafd5d30e39984b5bf1c7"
@@ -1944,6 +1957,15 @@ Lockfile:
       "@parcel/plugin" "2.0.0-beta.2"
       json5 "^2.1.0"
   
+  "@parcel/transformer-jsonld@^2.0.0-nightly.1849":
+    version "2.0.0-nightly.1849"
+    resolved "https://registry.yarnpkg.com/@parcel/transformer-jsonld/-/transformer-jsonld-2.0.0-nightly.1849.tgz#d9be074ab9eb6c037fe1fc7aa54aec6dbb6c1839"
+    integrity sha512-TPRuZ66loWfdVlepfyxSs5XhOqz+2ADz7xqwDWeiFzf45c+Txh6SHFP3M4H4EVVIArJJbazOM3eNqHrx6Yyglg==
+    dependencies:
+      "@parcel/plugin" "2.0.0-nightly.227+a98be591"
+      "@parcel/types" "2.0.0-nightly.227+a98be591"
+      json5 "^2.1.2"
+  
   "@parcel/transformer-postcss@2.0.0-beta.2":
     version "2.0.0-beta.2"
     resolved "https://registry.yarnpkg.com/@parcel/transformer-postcss/-/transformer-postcss-2.0.0-beta.2.tgz#8bd37e2e90bbcb8b1a06532981bd429b3ee146f1"
@@ -2036,6 +2058,11 @@ Lockfile:
     version "2.0.0-beta.2"
     resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.0.0-beta.2.tgz#39530f885a546ccc8759ba8b970440bb7aadc146"
     integrity sha512-ri2BPGAFDntQbA5p3m/4QgnEqWYToUMkAtLelXSPbwnTM0KARavTAwSRqz1xwTdXa8gQyv4SSV7xURwaPaZ3GA==
+  
+  "@parcel/types@2.0.0-nightly.227+a98be591":
+    version "2.0.0-nightly.227"
+    resolved "https://registry.yarnpkg.com/@parcel/types/-/types-2.0.0-nightly.227.tgz#6d79d3d1f278ced78edec03558ea4007849ee6c0"
+    integrity sha512-rWirqfVcYAW22BLY7zMzZGpeGjp7SQ3rsBXSklM8KKXjWXMrWRAgrlNNrI9U/eWmpZtxyMTif8Y6+fpIbF5FbQ==
   
   "@parcel/types@2.0.0-nightly.564+fbca3a93":
     version "2.0.0-nightly.564"
@@ -5111,6 +5138,11 @@ Lockfile:
     version "3.3.0"
     resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-3.3.0.tgz#b2e1c4dc4f7c6d57743df733a4f5978d18650559"
     integrity sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
+  
+  normalize.css@^8.0.1:
+    version "8.0.1"
+    resolved "https://registry.yarnpkg.com/normalize.css/-/normalize.css-8.0.1.tgz#9b98a208738b9cc2634caacbc42d131c97487bf3"
+    integrity sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
   
   nth-check@^1.0.2:
     version "1.0.2"

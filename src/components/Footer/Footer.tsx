@@ -28,7 +28,12 @@ export default () => {
 					overflow: 'hidden',
 				}}
 			>
-				<img src={YESLogo} alt="YES Logo" style={{ height: '48px' }} />
+				<img
+					src={YESLogo}
+					alt="YES Logo"
+					style={{ height: '48px' }}
+					height="48px"
+				/>
 			</div>
 		</footer>
 	);

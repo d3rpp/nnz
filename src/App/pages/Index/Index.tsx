@@ -68,7 +68,11 @@ export default React.memo(() => {
 
 				<p>
 					NurtureNZ is a&nbsp;
-					<a href="http://youngenterprise.org.nz" target="_blank">
+					<a
+						href="http://youngenterprise.org.nz"
+						target="_blank"
+						rel="noreferrer"
+					>
 						Young Enterprise Scheme
 					</a>
 					&nbsp;business, run with the goal of repurposing household
