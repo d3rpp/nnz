@@ -295,6 +295,13 @@
 
 			&.desc {
 				@include fadeUp(150ms);
+
+				.MuiCardContent-root {
+					text-align: center;
+					// margin: 8px !important;
+
+					padding: 16px;
+				}
 			}
 
 			&.ing {
